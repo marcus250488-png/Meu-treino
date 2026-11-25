@@ -43,6 +43,13 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: flutter build apk --release
 
+      - name: Mostrar SHA-1 da assinatura do APK
+        run: |
+          APK=build/app/outputs/flutter-apk/app-release.apk
+          AS=$(ls $ANDROID_HOME/build-tools/*/apksigner | sort -V | tail -1)
+          echo "=== ASSINATURA DO APK (copie o SHA-1 abaixo para o Firebase) ==="
+          "$AS" verify --print-certs "$APK" | grep -i "SHA-1" || true
+          keytool -printcert -jarfile "$APK" | grep -i "SHA1" || true
 
       - name: Package project source
         run: git archive --format=zip --output Meu_Treino_projeto.zip HEAD
