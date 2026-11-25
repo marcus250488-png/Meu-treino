@@ -153,10 +153,3 @@ VERSAO 1.14.7
 * Corrigido o import da biblioteca Syncfusion PDF: as classes de fonte usadas na exportação agora ficam disponíveis.
 * Mantida a exportação dinâmica do plano semanal atual em PDF, lendo os dias e exercícios cadastrados no momento da exportação.
 * Mantidos os 13 vídeos adicionados nas versões 1.14.5 e 1.14.6 e os demais arquivos da base 1.14.7.
-
-
---- v1.14.29 ---
-* Exercício finalizado fica travado mesmo se você sair do treino no meio (antes só travava ao salvar o treino inteiro).
-* Ao voltar ao treino em andamento, exercícios já concluídos nunca voltam para a fila.
-* Tela do treino: tirado o campo "Foco do dia" do bloco Organizar treino (o foco já aparece no topo).
-* Execução: botão "Finalizar treino" visível ao lado de "Excluir este exercício".
