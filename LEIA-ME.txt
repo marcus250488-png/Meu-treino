@@ -1,13 +1,14 @@
 MEU TREINO — PROJETO FLUTTER
 
 Este pacote contém o código-fonte Android/Flutter para versionamento no GitHub.
-A base atual prioriza uso individual/local e já inclui treinos, biblioteca, importação
-de PDF, execução, histórico, avaliação física, gráficos e registro de água.
+A base atual guarda tudo no aparelho e, com login Google, sincroniza com o Firebase
+(Firestore), separado por conta. Inclui treinos, biblioteca, importacao de PDF, execucao,
+historico, avaliacao fisica, graficos, agua, sono, passos, nutricao e XP.
 
 LEIA PRIMEIRO:
-- docs/ROADMAP_MVP.md: escopo, arquitetura-alvo, módulos futuros e dependências.
-- O login Google atual é opcional e não cria conta vinculada a academia nem sincroniza
-  os dados com servidor. Os registros atuais permanecem no aparelho.
+- docs/ARQUITETURA.md: como a sincronizacao funciona, mapa dos arquivos e plano de refatoracao.
+- docs/ROADMAP_MVP.md: escopo, arquitetura-alvo e modulos futuros.
+- docs/firestore.rules: regras de seguranca que devem estar publicadas no Firebase.
 
 ENVIAR PELO TERMUX:
 1. Extraia a pasta treino_completo no armazenamento do celular.

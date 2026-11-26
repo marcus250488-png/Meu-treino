@@ -10,9 +10,9 @@ O aplicativo atual é Flutter e funciona principalmente de forma local/offline. 
 - avaliação física com peso, altura e medidas, IMC informativo e gráfico;
 - meta e registro de consumo de água;
 - exercícios personalizados;
-- login Google opcional para identificação visual, sem autenticação de servidor.
+- login Google com Firebase: cada conta tem seus dados, sincronizados na nuvem (Firestore) e guardados tambem no aparelho.
 
-**Importante:** login Google não significa que exista conta de aluno vinculada a uma academia ou sincronização remota. Os dados atuais ficam no aparelho.
+**Importante:** o login identifica o usuario e sincroniza os dados da propria conta. Ainda nao existe conta de aluno vinculada a uma academia, nem painel de professor. Detalhes em docs/ARQUITETURA.md.
 
 ## 2. Decisão de produto para o MVP
 

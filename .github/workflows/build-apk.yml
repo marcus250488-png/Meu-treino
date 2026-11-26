@@ -31,12 +31,21 @@ jobs:
       - name: Restore signing key
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: |
-          if [ -n "$KEYSTORE_BASE64" ]; then
-            echo "$KEYSTORE_BASE64" | base64 -d > android/app/meutreino.jks
-          else
-            echo "KEYSTORE_BASE64 não configurado: usando chave de debug"
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$KEYSTORE_PASSWORD" ]; then
+            echo "::error::Faltam os segredos KEYSTORE_BASE64 e/ou KEYSTORE_PASSWORD. Sem eles o APK sairia com chave de debug e não instalaria por cima do app atual."
+            exit 1
           fi
+          echo "$KEYSTORE_BASE64" | base64 -d > android/app/meutreino.jks
+
+      - name: Analisar código
+        continue-on-error: true
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      - name: Testes
+        continue-on-error: true
+        run: flutter test
 
       - name: Build release APK
         env:

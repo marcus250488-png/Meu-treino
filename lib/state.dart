@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io' show gzip;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,6 +25,29 @@ String norm(String s) {
       .replaceAll(RegExp(r'[^a-z0-9 ]'), ' ')
       .replaceAll(RegExp(r'\s+'), ' ')
       .trim();
+}
+
+/// Compacta o mapa de dados (JSON + gzip + base64) para caber no limite de
+/// 1 MB por documento do Firestore (o texto repetitivo encolhe ~8x).
+String comprimirJson(Map<String, dynamic> m) =>
+    base64Encode(gzip.encode(utf8.encode(jsonEncode(m))));
+
+Map<String, dynamic> descomprimirJson(String z) => Map<String, dynamic>.from(
+    jsonDecode(utf8.decode(gzip.decode(base64Decode(z)))) as Map);
+
+/// "Impressão digital" dos dados: muda quando o usuário altera algo.
+/// Ignora o carimbo de hora e campos que mudam sozinhos (passos e XP).
+String impressaoDados(Map<String, dynamic> m) {
+  final c = Map<String, dynamic>.from(m)
+    ..remove('atualizado_em')
+    ..remove('passos')
+    ..remove('xp');
+  var h = 0x811c9dc5;
+  for (final b in utf8.encode(jsonEncode(c))) {
+    h ^= b;
+    h = (h * 0x01000193) & 0xFFFFFFFF;
+  }
+  return h.toRadixString(16);
 }
 
 String chaveData(DateTime d) => '${d.year}-${d.month}-${d.day}';
@@ -789,11 +813,25 @@ class AppState extends ChangeNotifier {
     _timerEnvio = Timer(const Duration(seconds: 2), _enviar);
   }
 
+  /// Grava os dados na nuvem (compactados) e guarda o que foi enviado,
+  /// para saber depois se existem alterações ainda não enviadas.
+  Future<void> _gravarNuvem(String u) async {
+    final m = _empacotar();
+    final z = comprimirJson(m);
+    if (z.length > 900000) {
+      throw Exception(
+          'Seus dados passaram do limite de 1 MB da nuvem. Exporte um backup.');
+    }
+    await _doc(u).set({'z': z, 'v': 3, 'atualizado_em': m['atualizado_em']});
+    await _p.setString(_k('sync_imp'), impressaoDados(m));
+    await _p.setString(_k('sync_ts'), '${m['atualizado_em']}');
+  }
+
   void _enviar() {
     final u = uid;
     if (u == null || !nuvemOk || !_nuvemPronta) return;
     try {
-      _doc(u).set(_empacotar()).then((_) {
+      _gravarNuvem(u).then((_) {
         ultimaSync = DateTime.now();
         erroNuvem = null;
       }).catchError((Object e) {
@@ -818,9 +856,21 @@ class AppState extends ChangeNotifier {
     try {
       final snap =
           await _doc(u).get().timeout(const Duration(seconds: 20));
-      final d = snap.data();
+      final d0 = snap.data();
+      final d = (d0 != null && d0['z'] is String)
+          ? descomprimirJson(d0['z'] as String)
+          : d0;
+      // Alterações feitas no aparelho (ex.: sem internet) que ainda não
+      // foram para a nuvem. Se a nuvem não mudou desde o último envio,
+      // o aparelho é a versão mais nova e não pode ser sobrescrito.
+      final impSalva = _p.getString(_k('sync_imp'));
+      final tsSalvo = _p.getString(_k('sync_ts'));
+      final tsNuvem = d == null ? null : d['atualizado_em'];
+      final pendenteLocal =
+          impSalva != null && impSalva != impressaoDados(_empacotar());
+      final manterLocal = pendenteLocal && tsSalvo != null && tsNuvem == tsSalvo;
       _aplicando = true;
-      if (snap.exists && d != null && d.isNotEmpty) {
+      if (snap.exists && d != null && d.isNotEmpty && !manterLocal) {
         // Mescla as sessões locais e da nuvem antes de aplicar os dados.
         // Assim, uma sessão salva no aparelho não some se ainda não chegou ao Firebase.
         final sessoesMescladas = <String, Map<String, dynamic>>{};
@@ -837,14 +887,14 @@ class AppState extends ChangeNotifier {
 
         _aplicar(d);
         await _salvarTudoLocal();
-      } else {
+      } else if (!manterLocal) {
         await _adotarLegado();
       }
       _aplicando = false;
       _nuvemPronta = true;
       // Persiste também a união no Firebase, não apenas no aparelho.
       if (snap.exists && d != null && d.isNotEmpty) {
-        await _doc(u).set(_empacotar());
+        await _gravarNuvem(u);
       } else {
         _enviar();
       }
@@ -1806,7 +1856,7 @@ class AppState extends ChangeNotifier {
     final u = uid;
     if (u != null && nuvemOk && _nuvemPronta && !_aplicando) {
       try {
-        await _doc(u).set(_empacotar()).timeout(const Duration(seconds: 15));
+        await _gravarNuvem(u).timeout(const Duration(seconds: 15));
         ultimaSync = DateTime.now();
         erroNuvem = null;
       } catch (e) {
