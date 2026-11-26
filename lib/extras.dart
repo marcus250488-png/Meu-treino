@@ -611,7 +611,7 @@ class PrivacidadeTela extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           Vidro(
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('O que fica salvo', style: titulo(20)),
