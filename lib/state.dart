@@ -495,6 +495,9 @@ class AppState extends ChangeNotifier {
       return 'A nuvem não iniciou${erroNuvem == null ? '' : ': $erroNuvem'}';
     }
     try {
+      try {
+        await _g.signOut();
+      } catch (_) {}
       final c = await _g.signIn();
       if (c == null) return 'Login cancelado';
       final a = await c.authentication;
