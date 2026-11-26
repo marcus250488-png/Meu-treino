@@ -1,0 +1,47 @@
+name: Adicionar vídeos dos exercícios
+
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'teste = só 4 exercícios, vão para a pasta preview_videos | completo = todos, direto em assets/videos'
+        type: choice
+        options:
+          - teste
+          - completo
+        default: teste
+
+permissions:
+  contents: write
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar ffmpeg
+        run: sudo apt-get update -y && sudo apt-get install -y ffmpeg
+
+      - name: Baixar e converter
+        env:
+          MODO: ${{ inputs.modo }}
+        run: |
+          if [ "$MODO" = "teste" ]; then
+            rm -rf preview_videos
+            TESTE=1 SAIDA=preview_videos bash tools/baixar_converter.sh
+            for f in preview_videos/*.mp4; do
+              ffmpeg -v error -y -ss 1 -i "$f" -frames:v 1 "${f%.mp4}.jpg"
+            done
+          else
+            SAIDA=assets/videos bash tools/baixar_converter.sh
+          fi
+
+      - name: Salvar no repositório
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Vídeos dos exercícios (${{ inputs.modo }})" || echo "Nada para salvar"
+          git push
