@@ -699,7 +699,7 @@ class AppState extends ChangeNotifier {
         .toList();
     passosHoje.value = passos[chaveData(DateTime.now())] ?? 0;
     lib = [
-      ..._base.map(_comOverEx),
+      ..._baseVisivel(),
       ..._lista(d['custom'])
           .map((e) => Exercicio.fromJson(Map<String, dynamic>.from(e as Map))),
     ];
@@ -908,7 +908,7 @@ class AppState extends ChangeNotifier {
       feitos = ((m['dias_concluidos'] as List?) ?? const [])
           .map((e) => '$e')
           .toSet();
-      lib = [..._base.map(_comOverEx), ...lib.where((e) => e.custom)];
+      lib = [..._baseVisivel(), ...lib.where((e) => e.custom)];
       for (final d in plano) {
         for (final it in d.itens) {
           if (it.exId.isNotEmpty && ex(it.exId) == null) {
@@ -941,7 +941,7 @@ class AppState extends ChangeNotifier {
       }
       if (m['exercicios_editados'] is Map) {
         exOver = Map<String, dynamic>.from(m['exercicios_editados'] as Map);
-        lib = [..._base.map(_comOverEx), ...lib.where((e) => e.custom)];
+        lib = [..._baseVisivel(), ...lib.where((e) => e.custom)];
       }
       alimentos = [
         ..._alimBase.map(_comOverAlim),
@@ -1004,6 +1004,7 @@ class AppState extends ChangeNotifier {
     exOver.remove(id);
     final i = lib.indexWhere((x) => x.id == id);
     final b = _base.where((x) => x.id == id).toList();
+    if (i < 0 && b.isNotEmpty) lib.add(b.first);
     if (i >= 0 && b.isNotEmpty) {
       lib[i] = b.first;
       for (final d in plano) {
@@ -1020,9 +1021,25 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> excluirExercicio(String id) async {
-    lib.removeWhere((x) => x.id == id && x.custom);
+    final i = lib.indexWhere((x) => x.id == id);
+    if (i < 0) return;
+    final e = lib[i];
+    if (!e.custom) {
+      // Exercício da biblioteca padrão: fica guardado como "oculto" junto das edições.
+      exOver[id] = {...e.toJson(), 'oculto': true};
+      await _p.setString(_k('ex_over'), jsonEncode(exOver));
+    }
+    lib.removeWhere((x) => x.id == id);
     await atualizarPlano();
   }
+
+  bool _exOculto(String id) {
+    final o = exOver[id];
+    return o is Map && o['oculto'] == true;
+  }
+
+  Iterable<Exercicio> _baseVisivel() =>
+      _base.where((e) => !_exOculto(e.id)).map(_comOverEx);
 
   // ---------- Nutrição ----------
   Alimento _comOverAlim(Alimento a) {
@@ -2145,55 +2162,8 @@ class AppState extends ChangeNotifier {
     return Sugestao(u.first + passo, true);
   }
 
-  // ---------- Exercícios do treino em andamento (sessão ainda não salva) ----------
-  final Set<String> _runFeitos = {};
-  final Set<String> _runExcl = {};
-  String _kRun(String nome, String diaNome) =>
-      '${chaveData(DateTime.now())}|$diaNome|$nome';
-  String _pRun(String diaNome) => '${chaveData(DateTime.now())}|$diaNome|';
-
-  /// Marca o exercício como finalizado no treino em andamento (fica travado).
-  void marcarRunFeito(String nome, String diaNome) {
-    if (_runFeitos.add(_kRun(nome, diaNome))) notifyListeners();
-  }
-
-  /// Marca o exercício como excluído só de hoje.
-  void marcarRunExcluido(String nome, String diaNome) {
-    if (_runExcl.add(_kRun(nome, diaNome))) notifyListeners();
-  }
-
-  /// Reconstrói a lista ao retomar um treino salvo (sem avisar a tela).
-  void definirRun(String diaNome, Iterable<String> feitos, Iterable<String> excl) {
-    final p = _pRun(diaNome);
-    _runFeitos.removeWhere((k) => k.startsWith(p));
-    _runExcl.removeWhere((k) => k.startsWith(p));
-    for (final n in feitos) {
-      _runFeitos.add('$p$n');
-    }
-    for (final n in excl) {
-      _runExcl.add('$p$n');
-    }
-  }
-
-  /// Treino de hoje terminou ou foi abandonado: libera a lista temporária.
-  void limparRun(String diaNome) {
-    final p = _pRun(diaNome);
-    final a = _runFeitos.length + _runExcl.length;
-    _runFeitos.removeWhere((k) => k.startsWith(p));
-    _runExcl.removeWhere((k) => k.startsWith(p));
-    if (_runFeitos.length + _runExcl.length != a) notifyListeners();
-  }
-
-  bool excluidoHojeEx(String nome, String diaNome) =>
-      _runExcl.contains(_kRun(nome, diaNome));
-
-  /// Já feito ou excluído hoje: não entra mais na fila do treino.
-  bool resolvidoHojeEx(String nome, String diaNome) =>
-      feitoHojeEx(nome, diaNome) || excluidoHojeEx(nome, diaNome);
-
-  /// Exercício já registrado hoje neste dia do plano (inclui o treino em andamento).
+  /// Exercício já registrado hoje neste dia do plano.
   bool feitoHojeEx(String nome, String diaNome) {
-    if (_runFeitos.contains(_kRun(nome, diaNome))) return true;
     final k = chaveData(DateTime.now());
     for (final s in sessoes) {
       final dt = DateTime.tryParse(s.data);

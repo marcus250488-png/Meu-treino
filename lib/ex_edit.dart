@@ -152,7 +152,7 @@ class _ExEditEstado extends State<ExercicioEditTela> {
               child: const Text('Restaurar original'),
             ),
           ],
-          if (e.custom) ...[
+          ...[
             const SizedBox(height: 10),
             OutlinedButton(
               style: estiloContorno,

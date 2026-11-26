@@ -393,7 +393,7 @@ class MaisTela extends StatelessWidget {
                 fontWeight: FontWeight.w800)),
       );
 
-  Widget _item(IconData icone, String titulo, String subtitulo,
+  Widget _item(IconData icone, String tit, String subtitulo,
       VoidCallback onTap, {Color? cor}) {
     final destaque = cor ?? kAzul;
     return Padding(
@@ -423,8 +423,7 @@ class MaisTela extends StatelessWidget {
               Expanded(child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(titulo, style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.w700)),
+                  Text(tit, style: titulo(21)),
                   const SizedBox(height: 3),
                   Text(subtitulo, style: const TextStyle(
                       color: kMudo, fontSize: 12, height: 1.25)),
@@ -615,24 +614,21 @@ class PrivacidadeTela extends StatelessWidget {
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('O que fica salvo',
-                    style: TextStyle(fontWeight: FontWeight.w700)),
+                Text('O que fica salvo', style: titulo(20)),
                 SizedBox(height: 6),
                 Text(
                   'Seu treino, histórico, avaliações, água, cargas e anotações ficam no celular e, se você entrou com o Google, também na sua conta na nuvem (Firebase). Cada conta só enxerga os próprios dados.',
                   style: TextStyle(color: kMudo),
                 ),
                 SizedBox(height: 14),
-                Text('Conta Google',
-                    style: TextStyle(fontWeight: FontWeight.w700)),
+                Text('Conta Google', style: titulo(20)),
                 SizedBox(height: 6),
                 Text(
                   'Usada para mostrar seu nome e foto e para separar e salvar seus dados na nuvem. O login é opcional: sem ele, tudo fica só neste celular.',
                   style: TextStyle(color: kMudo),
                 ),
                 SizedBox(height: 14),
-                Text('Dados de saúde',
-                    style: TextStyle(fontWeight: FontWeight.w700)),
+                Text('Dados de saúde', style: titulo(20)),
                 SizedBox(height: 6),
                 Text(
                   'Peso e medidas são opcionais e servem só para acompanhar sua evolução. O app não faz diagnóstico médico.',

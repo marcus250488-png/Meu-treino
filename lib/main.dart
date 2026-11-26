@@ -159,21 +159,21 @@ class _ShellEstado extends State<Shell> with SingleTickerProviderStateMixin {
           builder: (context, child) {
             final t = sel ? _pulso.value : 0.0;
             final escala = sel ? 1.0 + (0.055 * t) : 1.0;
+            final corpo = AnimatedContainer(
+              duration: const Duration(milliseconds: 220),
+              width: _compacto ? 40 : 48,
+              height: _compacto ? 36 : 42,
+              decoration: BoxDecoration(
+                color: sel ? branco(.18 + (.05 * t)) : Colors.transparent,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: child,
+            );
             return Transform.scale(
               scale: escala,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 220),
-                width: _compacto ? 40 : 48,
-                height: _compacto ? 36 : 42,
-                decoration: BoxDecoration(
-                  color: sel ? branco(.18 + (.05 * t)) : Colors.transparent,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: sel
-                      ? [BoxShadow(color: kAzul.withOpacity(.20 + (.25 * t)), blurRadius: 12 + (8 * t), spreadRadius: .5 + t)]
-                      : const [],
-                ),
-                child: child,
-              ),
+              child: sel
+                  ? AnelBrilho(cor: Colors.white, raio: 30, child: corpo)
+                  : corpo,
             );
           },
           child: Icon(icone, size: _compacto ? 17 : 18, color: sel ? Colors.white : kMudo),

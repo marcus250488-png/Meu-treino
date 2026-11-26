@@ -476,7 +476,7 @@ class _NutricaoEstado extends State<NutricaoTela> {
       clipBehavior: Clip.antiAlias,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         InkWell(
-          onTap: () => _push(RefeicaoTela(refId: r.id, dia: _dia)),
+          onTap: () => _push(CardapioTela(refId: r.id)),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 12, 14, 10),
             child: Row(children: [
@@ -1731,17 +1731,34 @@ class _ReceitaDetalheEstado extends State<ReceitaDetalheTela> {
 // Meu cardápio (refeições fixas)
 // ============================================================
 class CardapioTela extends StatefulWidget {
-  const CardapioTela({super.key});
+  /// Refeição para onde rolar ao abrir (ex.: ao tocar no card da refeição).
+  final String? refId;
+  const CardapioTela({super.key, this.refId});
 
   @override
   State<CardapioTela> createState() => _CardapioTelaEstado();
 }
 
 class _CardapioTelaEstado extends State<CardapioTela> {
+  final Map<String, GlobalKey> _chaves = {};
+  GlobalKey _chave(String id) => _chaves.putIfAbsent(id, () => GlobalKey());
+
   @override
   void initState() {
     super.initState();
     app.carregarCardapioPadrao();
+    final alvo = widget.refId;
+    if (alvo != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final ctx = _chaves[alvo]?.currentContext;
+        if (ctx != null) {
+          Scrollable.ensureVisible(ctx,
+              duration: const Duration(milliseconds: 350),
+              curve: Curves.easeOutCubic,
+              alignment: 0.02);
+        }
+      });
+    }
   }
 
   @override
@@ -1751,8 +1768,10 @@ class _CardapioTelaEstado extends State<CardapioTela> {
       body: ListenableBuilder(
         listenable: app,
         builder: (context, _) {
-          return ListView(
+          return SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 40),
+            child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Vidro(
                 padding: const EdgeInsets.all(16),
@@ -1781,6 +1800,7 @@ class _CardapioTelaEstado extends State<CardapioTela> {
               const SizedBox(height: 14),
               for (final r in kRefeicoes) _secao(context, r),
             ],
+            ),
           );
         },
       ),
@@ -1791,6 +1811,7 @@ class _CardapioTelaEstado extends State<CardapioTela> {
     final itens = app.entradasCardapio(r.id);
     final tot = app.totalCardapio(r.id);
     return Padding(
+      key: _chave(r.id),
       padding: const EdgeInsets.only(bottom: 14),
       child: Vidro(
         padding: const EdgeInsets.all(16),

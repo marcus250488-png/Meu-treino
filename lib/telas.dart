@@ -72,7 +72,9 @@ const _sem = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 /// Anel fino com um brilho que gira em volta do dia selecionado.
 class AnelBrilho extends StatefulWidget {
   final Widget child;
-  const AnelBrilho({required this.child});
+  final Color cor;
+  final double raio;
+  const AnelBrilho({required this.child, this.cor = kAzul, this.raio = 16});
   @override
   State<AnelBrilho> createState() => AnelBrilhoEstado();
 }
@@ -95,7 +97,7 @@ class AnelBrilhoEstado extends State<AnelBrilho>
       animation: _c,
       child: widget.child,
       builder: (context, child) => CustomPaint(
-        foregroundPainter: AnelBrilhoPainter(_c.value),
+        foregroundPainter: AnelBrilhoPainter(_c.value, widget.cor, widget.raio),
         child: child,
       ),
     );
@@ -104,20 +106,22 @@ class AnelBrilhoEstado extends State<AnelBrilho>
 
 class AnelBrilhoPainter extends CustomPainter {
   final double t;
-  AnelBrilhoPainter(this.t);
+  final Color cor;
+  final double raio;
+  AnelBrilhoPainter(this.t, [this.cor = kAzul, this.raio = 16]);
 
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Offset.zero & size;
     final rr =
-        RRect.fromRectAndRadius(rect.deflate(1), const Radius.circular(16));
+        RRect.fromRectAndRadius(rect.deflate(1), Radius.circular(raio));
     final shader = SweepGradient(
       colors: [
-        kAzul.withOpacity(0),
-        kAzul,
+        cor.withOpacity(0),
+        cor,
         Colors.white,
-        kAzul,
-        kAzul.withOpacity(0),
+        cor,
+        cor.withOpacity(0),
       ],
       stops: const [0.0, 0.3, 0.42, 0.54, 1.0],
       transform: GradientRotation(t * 6.283185307),
@@ -140,7 +144,8 @@ class AnelBrilhoPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant AnelBrilhoPainter old) => old.t != t;
+  bool shouldRepaint(covariant AnelBrilhoPainter old) =>
+      old.t != t || old.cor != cor || old.raio != raio;
 }
 
 Widget _envolveSel(bool sel, Widget child) =>
@@ -1331,34 +1336,67 @@ class _TreinoTelaEstado extends State<TreinoTela> {
     app.atualizarPlano();
   }
 
+  PopupMenuItem<String> _itemMenu(String v, IconData ic, String t,
+          {Color? cor}) =>
+      PopupMenuItem<String>(
+        value: v,
+        height: 44,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          Icon(ic, size: 19, color: cor ?? kAzul),
+          const SizedBox(width: 10),
+          Text(t,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: cor ?? Colors.white)),
+        ]),
+      );
+
   Widget _menuExercicio(BuildContext context, Item it) {
-    return SizedBox(
-      width: 32,
-      height: 32,
-      child: PopupMenuButton<String>(
-        padding: EdgeInsets.zero,
-        iconSize: 20,
-        icon: const Icon(Icons.more_vert, color: kMudo),
-        onSelected: (v) async {
-          if (v == 'trocar') {
-            if (await trocarExercicio(context, it)) {
-              setState(() {});
-              app.atualizarPlano();
+    return Transform.translate(
+      offset: const Offset(4, -10),
+      child: SizedBox(
+        width: 36,
+        height: 32,
+        child: PopupMenuButton<String>(
+          padding: EdgeInsets.zero,
+          iconSize: 24,
+          tooltip: 'Opções',
+          offset: const Offset(0, 34),
+          color: kSuperf,
+          elevation: 14,
+          shadowColor: Colors.black,
+          surfaceTintColor: Colors.transparent,
+          constraints: const BoxConstraints(minWidth: 180),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(color: branco(.14)),
+          ),
+          icon: const Icon(Icons.more_horiz, color: kMudo),
+          onSelected: (v) async {
+            if (v == 'trocar') {
+              if (await trocarExercicio(context, it)) {
+                setState(() {});
+                app.atualizarPlano();
+              }
+            } else if (v == 'series') {
+              if (await editarSeriesReps(context, it)) {
+                setState(() {});
+                app.atualizarPlano();
+              }
+            } else if (v == 'excluir') {
+              await _excluirDaFicha(it);
             }
-          } else if (v == 'series') {
-            if (await editarSeriesReps(context, it)) {
-              setState(() {});
-              app.atualizarPlano();
-            }
-          } else if (v == 'excluir') {
-            await _excluirDaFicha(it);
-          }
-        },
-        itemBuilder: (_) => const [
-          PopupMenuItem(value: 'trocar', child: Text('Trocar exercício')),
-          PopupMenuItem(value: 'series', child: Text('Editar séries e reps')),
-          PopupMenuItem(value: 'excluir', child: Text('Excluir da ficha')),
-        ],
+          },
+          itemBuilder: (_) => [
+            _itemMenu('trocar', Icons.swap_horiz_rounded, 'Trocar exercício'),
+            _itemMenu('series', Icons.tune_rounded, 'Editar séries e reps'),
+            const PopupMenuDivider(height: 1),
+            _itemMenu('excluir', Icons.delete_outline_rounded, 'Excluir da ficha',
+                cor: Colors.redAccent),
+          ],
+        ),
       ),
     );
   }
