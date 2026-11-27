@@ -1639,8 +1639,116 @@ void abrirImportar(BuildContext context, void Function(int) irPara) {
   );
 }
 
+/// Volume (kg) de um exercício: carga de cada série x repetições feitas.
+double _volumeDe(List<double> cargas, String reps) {
+  final rs = reps.split('/').map((e) => int.tryParse(e.trim())).toList();
+  var v = 0.0;
+  for (var j = 0; j < cargas.length; j++) {
+    final r = (j < rs.length ? rs[j] : null) ?? repsMedio(reps).round();
+    v += cargas[j] * r;
+  }
+  return v;
+}
+
+/// O que foi feito no treino em andamento e ainda NÃO está no histórico:
+/// exercícios concluídos + os deixados pela metade. `ja` = nomes já contados
+/// (não repete) e `excluir` = exercício que sai do treino.
+List<Map<String, dynamic>> _detalhesDaCorrida(
+    Dia dia, _RunSalvo run, Set<String> ja,
+    {String? excluir}) {
+  final det = <Map<String, dynamic>>[];
+  void add(String nome, String grupo, String reps, List<double> cargas,
+      bool cresc) {
+    if (cargas.isEmpty || nome == excluir || ja.contains(nome)) return;
+    ja.add(nome);
+    det.add({
+      'nome': nome,
+      'grupo': grupo,
+      'reps': reps,
+      'cargas': List<double>.of(cargas),
+      'rpe': run.rpe[nome] ?? '',
+      if (cresc) 'cresc': true,
+    });
+  }
+
+  Item? itemDe(int k) {
+    if (run.plano.isNotEmpty) {
+      if (k < 0 || k >= run.plano.length) return null;
+      for (final i in dia.itens) {
+        if (i.exId == run.plano[k]) return i;
+      }
+      return null;
+    }
+    return (k >= 0 && k < dia.itens.length) ? dia.itens[k] : null;
+  }
+
+  for (final r in run.resumo) {
+    add(r.nome, r.grupo, r.reps, r.cargas, r.cresc);
+  }
+  for (final e in run.prog.entries) {
+    final item = itemDe(e.key);
+    if (item == null) continue;
+    add(_nomeItem(item), item.grupo,
+        e.value.reps.isEmpty ? item.reps : e.value.reps.join(' / '),
+        e.value.cargas, false);
+  }
+  if (run.cargasEx.isNotEmpty && run.fila.isNotEmpty) {
+    final item = itemDe(run.fila.first);
+    if (item != null) {
+      add(_nomeItem(item), item.grupo,
+          run.repsEx.isEmpty ? item.reps : run.repsEx.join(' / '),
+          run.cargasEx, false);
+    }
+  }
+  return det;
+}
+
+/// Treino em andamento que ficou para trás (app fechado por horas ou virou o
+/// dia): salva o que foi feito no histórico, na data em que foi treinado, para
+/// nada se perder.
+Future<void> _salvarCorridaAbandonada(_RunSalvo sv, Dia dia) async {
+  try {
+    final ja = <String>{};
+    for (final x in app.sessoes) {
+      final dt = DateTime.tryParse(x.data);
+      if (dt == null || x.dia != dia.nome || chaveData(dt) != sv.data) continue;
+      for (final m in x.detalhes ?? const <Map<String, dynamic>>[]) {
+        ja.add((m['nome'] ?? '').toString());
+      }
+    }
+    final det = _detalhesDaCorrida(dia, sv, ja);
+    if (det.isEmpty) return;
+    var series = 0;
+    var volume = 0.0;
+    final nomes = <String>{};
+    for (final m in det) {
+      final c = [for (final x in (m['cargas'] as List)) (x as num).toDouble()];
+      series += c.length;
+      volume += _volumeDe(c, (m['reps'] ?? '') as String);
+      nomes.add((m['nome'] ?? '').toString());
+    }
+    if (series == 0) return;
+    var total = 0;
+    for (final i in dia.itens) {
+      if (nomes.contains(_nomeItem(i))) total += i.series;
+    }
+    await app.addSessao(Sessao(
+      data: sv.saiuEm.toIso8601String(),
+      dia: dia.nome,
+      seg: sv.seg,
+      series: series,
+      seriesTotal: total,
+      volume: volume,
+      completo: false,
+      livre: false,
+      detalhes: det,
+    ));
+  } catch (_) {}
+}
+
 /// Tira um exercício só da sessão de hoje e salva o treino de hoje como completo,
-/// com os exercícios feitos. A rotina do dia não muda.
+/// com os exercícios feitos (do histórico de hoje e do treino em andamento).
+/// A rotina do dia não muda.
 Future<bool> finalizarTreinoSemExercicio(Dia dia, String nome) async {
   final k = chaveData(DateTime.now());
   final doDia = app.sessoes
@@ -1672,12 +1780,26 @@ Future<bool> finalizarTreinoSemExercicio(Dia dia, String nome) async {
     }
   }
 
+  // Também conta o que foi feito no treino em andamento (ainda fora do histórico).
+  final run = _corridaDeHoje(dia);
+  if (run != null) {
+    seg += run.seg;
+    final ja = {for (final m in det) (m['nome'] ?? '').toString()};
+    for (final m in _detalhesDaCorrida(dia, run, ja, excluir: nome)) {
+      det.add(m);
+      final c = [for (final x in (m['cargas'] as List)) (x as num).toDouble()];
+      series += c.length;
+      volume += _volumeDe(c, (m['reps'] ?? '') as String);
+    }
+  }
+
   // Sem exercícios concluídos, não há treino para salvar nem dia para concluir.
   if (det.isEmpty || series == 0) return false;
 
+  final feitosNomes = {for (final m in det) (m['nome'] ?? '').toString()};
   var total = 0;
   for (final i in dia.itens) {
-    if ((app.ex(i.exId)?.nome ?? i.nome) != nome) total += i.series;
+    if (feitosNomes.contains(_nomeItem(i))) total += i.series;
   }
 
   final sessao = Sessao(
@@ -2063,7 +2185,12 @@ Future<bool> retomarTreinoSalvo(BuildContext context) async {
       if (d.nome == sv.dia) dia = d;
     }
     final velho = DateTime.now().difference(sv.saiuEm).inHours >= 8;
-    if (sv.livre || velho || dia == null || sv.data != chaveData(DateTime.now())) {
+    final eHoje = sv.data == chaveData(DateTime.now());
+    if (!sv.livre && dia != null && (velho || !eHoje)) {
+      // Antes de descartar, guarda no histórico o que já tinha sido feito.
+      await _salvarCorridaAbandonada(sv, dia);
+    }
+    if (sv.livre || velho || dia == null || !eHoje) {
       await app.gravarRunSalvo(null);
       return false;
     }
@@ -2153,6 +2280,14 @@ class _RunEstado extends State<RunTela> with WidgetsBindingObserver {
       final base = widget.livre ? todos : pend;
       _semPendentes = !widget.livre && base.isEmpty;
       _fila = _semPendentes ? [0] : List<int>.of(base);
+    }
+    // Tudo feito/excluído, mas o treino não tinha sido gravado: grava agora.
+    if (_semPendentes &&
+        !widget.livre &&
+        resumo.any((r) => !app.feitoHojeEx(r.nome, widget.dia.nome))) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && !_terminou) _fim();
+      });
     }
     _carregar();
     WidgetsBinding.instance.addObserver(this);
@@ -2267,7 +2402,8 @@ class _RunEstado extends State<RunTela> with WidgetsBindingObserver {
     _crescEtapa = mesmoPrimeiro ? s.crescEtapa : 0;
     // O cronômetro segue contando enquanto a tela esteve fechada.
     final dec = DateTime.now().difference(s.saiuEm).inSeconds;
-    seg = s.seg + (s.pausado ? 0 : dec);
+    // Se não sobrou nada a fazer, o tempo vale o que estava marcado ao sair.
+    seg = s.seg + ((s.pausado || _semPendentes) ? 0 : dec);
     if (mesmoPrimeiro) {
       descanso = s.pausado ? s.descanso : (s.descanso > dec ? s.descanso - dec : 0);
       _crescPausa =
