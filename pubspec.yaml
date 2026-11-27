@@ -31,6 +31,7 @@ flutter:
   assets:
     - assets/exercicios.json
     - assets/anatomia.json
+    - assets/videos.json
     - assets/exercicios/
     - assets/fotos/
     - assets/videos/

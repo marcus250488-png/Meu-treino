@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'state.dart';
 import 'nivel.dart';
 import 'telas.dart';
+import 'video_ex.dart' show abrirBaixarVideosDoPlano;
 import 'edicao.dart';
 import 'passos.dart';
 import 'sessao_detalhe.dart';
@@ -492,6 +493,9 @@ class MaisTela extends StatelessWidget {
             _item(Icons.picture_as_pdf_outlined, 'Importar treino (PDF)',
                 'Atualize sua ficha a partir de um arquivo',
                 () => abrirImportar(context, irPara)),
+            _item(Icons.cloud_download_outlined, 'Baixar vídeos do plano',
+                'Deixe os vídeos prontos para usar sem internet',
+                () => abrirBaixarVideosDoPlano(context)),
             _secao('Aplicativo'),
             _item(Icons.tune_rounded, 'Configurações',
                 'Descanso e comportamento do aplicativo',

@@ -579,5 +579,2631 @@
       "rosca de punho",
       "antebraço polia"
     ]
+  },
+  {
+    "id": "45-degree-bycicle-twisting-crunch",
+    "nome": "Abdominal bicicleta inclinado",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "45 degree bycicle twisting crunch",
+      "45-degree bicycle twisting crunch"
+    ]
+  },
+  {
+    "id": "45-degree-bycicle-twisting-crunch-1",
+    "nome": "Abdominal bicicleta inclinado (variação)",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "45 degree bycicle twisting crunch 1",
+      "45-degree bicycle twisting crunch"
+    ]
+  },
+  {
+    "id": "stretching-all-fours-squad-stretch",
+    "nome": "Alongamento de adutores de quatro apoios",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "all fours groin stretch",
+      "stretching all fours squad stretch"
+    ]
+  },
+  {
+    "id": "band-assisted-pull-up",
+    "nome": "Barra fixa assistida com elástico",
+    "grupo": "Costas",
+    "equip": "Elástico",
+    "apelidos": [
+      "band assisted pull up",
+      "band assisted pull-up"
+    ]
+  },
+  {
+    "id": "band-bent-over-rear-lateral-raise",
+    "nome": "Elevação posterior com elástico inclinado",
+    "grupo": "Ombros",
+    "equip": "Elástico",
+    "apelidos": [
+      "band bent over rear lateral raise",
+      "band bent-over rear lateral raise"
+    ]
+  },
+  {
+    "id": "band-hip-abduction",
+    "nome": "Abdução de quadril com elástico",
+    "grupo": "Glúteos",
+    "equip": "Elástico",
+    "apelidos": [
+      "band hip abduction"
+    ]
+  },
+  {
+    "id": "band-hip-adduction",
+    "nome": "Adução de quadril com elástico",
+    "grupo": "Pernas",
+    "equip": "Elástico",
+    "apelidos": [
+      "band hip adduction"
+    ]
+  },
+  {
+    "id": "band-kneeling-one-arm-pulldown",
+    "nome": "Puxada unilateral ajoelhado com elástico",
+    "grupo": "Costas",
+    "equip": "Elástico",
+    "apelidos": [
+      "band kneeling one arm pulldown"
+    ]
+  },
+  {
+    "id": "band-one-arm-forward-raise",
+    "nome": "Elevação frontal unilateral com elástico",
+    "grupo": "Ombros",
+    "equip": "Elástico",
+    "apelidos": [
+      "band one arm forward raise",
+      "band one arm front raise"
+    ]
+  },
+  {
+    "id": "band-one-leg-kickback-bent-position",
+    "nome": "Coice de glúteo com elástico",
+    "grupo": "Glúteos",
+    "equip": "Elástico",
+    "apelidos": [
+      "band one leg kickback bent position",
+      "band one-leg kickback (bent position)"
+    ]
+  },
+  {
+    "id": "band-overhead-triceps-extension",
+    "nome": "Tríceps francês com elástico",
+    "grupo": "Tríceps",
+    "equip": "Elástico",
+    "apelidos": [
+      "band overhead triceps extension"
+    ]
+  },
+  {
+    "id": "band-leg-curl",
+    "nome": "Flexão de pernas com elástico",
+    "grupo": "Posterior de coxa",
+    "equip": "Elástico",
+    "apelidos": [
+      "band leg curl",
+      "band prone leg curl"
+    ]
+  },
+  {
+    "id": "band-pull-through",
+    "nome": "Pull through com elástico",
+    "grupo": "Glúteos",
+    "equip": "Elástico",
+    "apelidos": [
+      "band pull through"
+    ]
+  },
+  {
+    "id": "band-decline-sit-ups",
+    "nome": "Abdominal declinado com elástico",
+    "grupo": "Abdômen",
+    "equip": "Elástico",
+    "apelidos": [
+      "band decline sit ups",
+      "band resisted decline sit-up"
+    ]
+  },
+  {
+    "id": "band-seated-leg-extension",
+    "nome": "Extensão de pernas com elástico sentado",
+    "grupo": "Quadríceps",
+    "equip": "Elástico",
+    "apelidos": [
+      "band seated leg extension"
+    ]
+  },
+  {
+    "id": "band-seated-row",
+    "nome": "Remada sentada com elástico",
+    "grupo": "Costas",
+    "equip": "Elástico",
+    "apelidos": [
+      "band seated row"
+    ]
+  },
+  {
+    "id": "stretching-band-warm-up-shoulder-stretch",
+    "nome": "Alongamento de ombros com elástico",
+    "grupo": "Ombros",
+    "equip": "Elástico",
+    "apelidos": [
+      "band shoulder warm-up stretch",
+      "stretching band warm up shoulder stretch"
+    ]
+  },
+  {
+    "id": "band-side-bend",
+    "nome": "Flexão lateral com elástico",
+    "grupo": "Abdômen",
+    "equip": "Elástico",
+    "apelidos": [
+      "band side bend"
+    ]
+  },
+  {
+    "id": "band-standing-calf-raise",
+    "nome": "Panturrilha em pé com elástico",
+    "grupo": "Panturrilha",
+    "equip": "Elástico",
+    "apelidos": [
+      "band standing calf raise"
+    ]
+  },
+  {
+    "id": "band-standing-crunch",
+    "nome": "Abdominal em pé com elástico",
+    "grupo": "Abdômen",
+    "equip": "Elástico",
+    "apelidos": [
+      "band standing crunch"
+    ]
+  },
+  {
+    "id": "band-standing-leg-curl",
+    "nome": "Flexão de pernas em pé com elástico",
+    "grupo": "Posterior de coxa",
+    "equip": "Elástico",
+    "apelidos": [
+      "band standing leg curl"
+    ]
+  },
+  {
+    "id": "band-standing-lift",
+    "nome": "Elevação diagonal com elástico",
+    "grupo": "Abdômen",
+    "equip": "Elástico",
+    "apelidos": [
+      "band standing lift"
+    ]
+  },
+  {
+    "id": "band-standing-rear-delt-row",
+    "nome": "Remada posterior em pé com elástico",
+    "grupo": "Ombros",
+    "equip": "Elástico",
+    "apelidos": [
+      "band standing rear delt row"
+    ]
+  },
+  {
+    "id": "band-straight-back-seated-row",
+    "nome": "Remada sentada costas retas com elástico",
+    "grupo": "Costas",
+    "equip": "Elástico",
+    "apelidos": [
+      "band straight back seated row",
+      "band straight-back seated row"
+    ]
+  },
+  {
+    "id": "band-triceps-pushdown",
+    "nome": "Tríceps pushdown com elástico",
+    "grupo": "Tríceps",
+    "equip": "Elástico",
+    "apelidos": [
+      "band triceps pushdown"
+    ]
+  },
+  {
+    "id": "barbell-clean-and-press",
+    "nome": "Arremesso e desenvolvimento com barra",
+    "grupo": "Quadríceps",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell clean and press"
+    ]
+  },
+  {
+    "id": "barbell-close-grip-bench-press",
+    "nome": "Supino fechado com barra",
+    "grupo": "Tríceps",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell close grip bench press"
+    ]
+  },
+  {
+    "id": "barbell-decline-bench-press",
+    "nome": "Supino declinado com barra",
+    "grupo": "Peito",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell decline bench press"
+    ]
+  },
+  {
+    "id": "barbell-drag-curl",
+    "nome": "Rosca drag com barra",
+    "grupo": "Bíceps",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell drag curl"
+    ]
+  },
+  {
+    "id": "barbell-front-raise",
+    "nome": "Elevação frontal com barra",
+    "grupo": "Ombros",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell front raise"
+    ]
+  },
+  {
+    "id": "barbell-front-chest-squat",
+    "nome": "Agachamento frontal com barra",
+    "grupo": "Quadríceps",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell front chest squat",
+      "barbell front squat"
+    ]
+  },
+  {
+    "id": "barbell-incline-bench-press",
+    "nome": "Supino inclinado com barra",
+    "grupo": "Peito",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell incline bench press"
+    ]
+  },
+  {
+    "id": "barbell-lunge",
+    "nome": "Afundo com barra",
+    "grupo": "Glúteos",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell lunge"
+    ]
+  },
+  {
+    "id": "barbell-prone-incline-curl",
+    "nome": "Rosca bíceps de bruços no banco inclinado com barra",
+    "grupo": "Bíceps",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell prone incline curl"
+    ]
+  },
+  {
+    "id": "barbell-rear-delt-raise",
+    "nome": "Elevação posterior com barra",
+    "grupo": "Ombros",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell rear delt raise"
+    ]
+  },
+  {
+    "id": "barbell-reverse-wrist-curl-over-grip",
+    "nome": "Rosca de punho inversa com barra",
+    "grupo": "Antebraço",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell reverse wrist curl",
+      "barbell reverse wrist curl over grip"
+    ]
+  },
+  {
+    "id": "barbell-seated-behind-head-military-press",
+    "nome": "Desenvolvimento atrás da nuca sentado",
+    "grupo": "Ombros",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell seated behind head military press",
+      "barbell seated behind-the-neck press"
+    ]
+  },
+  {
+    "id": "barbell-shrug",
+    "nome": "Encolhimento com barra",
+    "grupo": "Costas",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell shrug"
+    ]
+  },
+  {
+    "id": "barbell-standing-back-wrist-curl",
+    "nome": "Rosca de punho atrás do corpo com barra",
+    "grupo": "Antebraço",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell standing back wrist curl"
+    ]
+  },
+  {
+    "id": "barbell-underhand-bent-over-row",
+    "nome": "Remada curvada supinada com barra",
+    "grupo": "Costas",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell underhand bent over row",
+      "barbell underhand bent-over row"
+    ]
+  },
+  {
+    "id": "barbell-upright-row-wide-grip",
+    "nome": "Remada alta pegada aberta com barra",
+    "grupo": "Ombros",
+    "equip": "Barra",
+    "apelidos": [
+      "barbell upright row wide grip",
+      "barbell wide-grip upright row"
+    ]
+  },
+  {
+    "id": "battling-ropes",
+    "nome": "Cordas navais",
+    "grupo": "Ombros",
+    "equip": "Corda",
+    "apelidos": [
+      "battling ropes"
+    ]
+  },
+  {
+    "id": "crunch-on-bench",
+    "nome": "Abdominal no banco",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "bench crunch",
+      "crunch on bench"
+    ]
+  },
+  {
+    "id": "bench-pull-ups",
+    "nome": "Barra fixa com apoio de banco",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "bench pull ups",
+      "bench pull-up"
+    ]
+  },
+  {
+    "id": "bent-knee-lying-twist-on-stability-ball",
+    "nome": "Rotação de tronco deitado na bola",
+    "grupo": "Abdômen",
+    "equip": "Bola",
+    "apelidos": [
+      "bent knee lying twist on stability ball"
+    ]
+  },
+  {
+    "id": "stretching-bridge-pose-setu-bandhasana",
+    "nome": "Ponte (Setu Bandhasana)",
+    "grupo": "Glúteos",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "bridge pose (setu bandhasana)",
+      "stretching bridge pose setu bandhasana"
+    ]
+  },
+  {
+    "id": "stretching-bridge-pose-setu-bandhasana-1",
+    "nome": "Ponte (variação)",
+    "grupo": "Glúteos",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "bridge pose (setu bandhasana)",
+      "stretching bridge pose setu bandhasana 1"
+    ]
+  },
+  {
+    "id": "burpee",
+    "nome": "Burpee",
+    "grupo": "Cardio",
+    "equip": "Peso corporal",
+    "apelidos": []
+  },
+  {
+    "id": "stretching-butterfly-yoga-pose",
+    "nome": "Alongamento borboleta",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "butterfly yoga pose",
+      "stretching butterfly yoga pose"
+    ]
+  },
+  {
+    "id": "cable-crossover-reverse-fly",
+    "nome": "Crucifixo inverso no cabo cruzado",
+    "grupo": "Ombros",
+    "equip": "Polia",
+    "apelidos": [
+      "cable crossover reverse fly"
+    ]
+  },
+  {
+    "id": "cable-kneeling-crunch",
+    "nome": "Abdominal ajoelhado na polia",
+    "grupo": "Abdômen",
+    "equip": "Polia",
+    "apelidos": [
+      "cable kneeling crunch"
+    ]
+  },
+  {
+    "id": "cable-lying-triceps-extension",
+    "nome": "Tríceps deitado na polia",
+    "grupo": "Tríceps",
+    "equip": "Polia",
+    "apelidos": [
+      "cable lying triceps extension"
+    ]
+  },
+  {
+    "id": "cable-one-arm-curl",
+    "nome": "Rosca unilateral na polia",
+    "grupo": "Bíceps",
+    "equip": "Polia",
+    "apelidos": [
+      "cable one arm curl"
+    ]
+  },
+  {
+    "id": "cable-one-arm-forward-raise",
+    "nome": "Elevação frontal unilateral na polia",
+    "grupo": "Ombros",
+    "equip": "Polia",
+    "apelidos": [
+      "cable one arm forward raise",
+      "cable one arm front raise"
+    ]
+  },
+  {
+    "id": "cable-one-arm-lateral-pulldown",
+    "nome": "Puxada unilateral na polia alta",
+    "grupo": "Costas",
+    "equip": "Polia",
+    "apelidos": [
+      "cable one arm lateral pulldown"
+    ]
+  },
+  {
+    "id": "cable-one-arm-lateral-raise",
+    "nome": "Elevação lateral unilateral na polia",
+    "grupo": "Ombros",
+    "equip": "Polia",
+    "apelidos": [
+      "cable one arm lateral raise"
+    ]
+  },
+  {
+    "id": "cable-one-arm-twisting-seated-row",
+    "nome": "Remada unilateral com rotação na polia",
+    "grupo": "Costas",
+    "equip": "Polia",
+    "apelidos": [
+      "cable one arm twisting seated row",
+      "cable one-arm twisting seated row"
+    ]
+  },
+  {
+    "id": "cable-pulldown",
+    "nome": "Puxada na polia",
+    "grupo": "Costas",
+    "equip": "Polia",
+    "apelidos": [
+      "cable pulldown"
+    ]
+  },
+  {
+    "id": "cable-rear-delt-row-with-rope",
+    "nome": "Remada posterior com corda na polia",
+    "grupo": "Ombros",
+    "equip": "Polia",
+    "apelidos": [
+      "cable rear delt row (with rope)",
+      "cable rear delt row with rope"
+    ]
+  },
+  {
+    "id": "cable-seated-high-row-v-bar",
+    "nome": "Remada alta sentada com barra V",
+    "grupo": "Costas",
+    "equip": "Polia",
+    "apelidos": [
+      "cable seated high row (v-bar)",
+      "cable seated high row v bar"
+    ]
+  },
+  {
+    "id": "cable-standing-crunch",
+    "nome": "Abdominal em pé na polia",
+    "grupo": "Abdômen",
+    "equip": "Polia",
+    "apelidos": [
+      "cable standing crunch"
+    ]
+  },
+  {
+    "id": "cable-standing-fly-crossover-fly",
+    "nome": "Crucifixo em pé na polia",
+    "grupo": "Peito",
+    "equip": "Polia",
+    "apelidos": [
+      "cable standing fly",
+      "cable standing fly crossover fly"
+    ]
+  },
+  {
+    "id": "cable-standing-inner-curl",
+    "nome": "Rosca interna na polia",
+    "grupo": "Bíceps",
+    "equip": "Polia",
+    "apelidos": [
+      "cable standing inner curl"
+    ]
+  },
+  {
+    "id": "cable-standing-lift",
+    "nome": "Elevação diagonal na polia",
+    "grupo": "Abdômen",
+    "equip": "Polia",
+    "apelidos": [
+      "cable standing lift"
+    ]
+  },
+  {
+    "id": "cable-standing-one-arm-triceps-extension",
+    "nome": "Tríceps unilateral em pé na polia",
+    "grupo": "Tríceps",
+    "equip": "Polia",
+    "apelidos": [
+      "cable standing one arm triceps extension"
+    ]
+  },
+  {
+    "id": "cable-triceps-pushdown",
+    "nome": "Tríceps pushdown na polia",
+    "grupo": "Tríceps",
+    "equip": "Polia",
+    "apelidos": [
+      "cable triceps pushdown"
+    ]
+  },
+  {
+    "id": "cable-twist-up-down",
+    "nome": "Rotação na polia (diagonal)",
+    "grupo": "Abdômen",
+    "equip": "Polia",
+    "apelidos": [
+      "cable twist (up-down)",
+      "cable twist up down"
+    ]
+  },
+  {
+    "id": "stretching-calf-stretch-with-rope",
+    "nome": "Alongamento de panturrilha com corda",
+    "grupo": "Panturrilha",
+    "equip": "Elástico",
+    "apelidos": [
+      "calf stretch with rope",
+      "stretching calf stretch with rope"
+    ]
+  },
+  {
+    "id": "stretching-calf-stretch-with-strap",
+    "nome": "Alongamento de panturrilha com faixa",
+    "grupo": "Panturrilha",
+    "equip": "Elástico",
+    "apelidos": [
+      "calf stretch with strap",
+      "stretching calf stretch with strap"
+    ]
+  },
+  {
+    "id": "cambered-bar-lying-row",
+    "nome": "Remada deitado com barra curva",
+    "grupo": "Costas",
+    "equip": "Barra",
+    "apelidos": [
+      "cambered bar lying row"
+    ]
+  },
+  {
+    "id": "cardio-exercises",
+    "nome": "Exercício aeróbico livre",
+    "grupo": "Cardio",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "cardio exercise",
+      "cardio exercises"
+    ]
+  },
+  {
+    "id": "cardio-exercises-machine",
+    "nome": "Aeróbico em máquina",
+    "grupo": "Cardio",
+    "equip": "Máquina",
+    "apelidos": [
+      "cardio exercises machine",
+      "cardio machine exercise"
+    ]
+  },
+  {
+    "id": "cardio-exercises-machines",
+    "nome": "Treino aeróbico em máquinas",
+    "grupo": "Cardio",
+    "equip": "Máquina",
+    "apelidos": [
+      "cardio exercises machines",
+      "cardio machine workouts"
+    ]
+  },
+  {
+    "id": "chest-dips",
+    "nome": "Mergulho para peito",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "chest dips"
+    ]
+  },
+  {
+    "id": "chest-lift-with-rotation",
+    "nome": "Abdominal com rotação",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "chest lift with rotation"
+    ]
+  },
+  {
+    "id": "stretching-chin-to-chest-stretch",
+    "nome": "Alongamento de pescoço (queixo ao peito)",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "chin-to-chest stretch",
+      "stretching chin to chest stretch"
+    ]
+  },
+  {
+    "id": "chin-ups-narrow-parallel-grip",
+    "nome": "Barra fixa pegada paralela fechada",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "chin ups narrow parallel grip",
+      "chin-ups (narrow parallel grip)"
+    ]
+  },
+  {
+    "id": "close-feet-leg-press",
+    "nome": "Leg press com pés juntos",
+    "grupo": "Quadríceps",
+    "equip": "Máquina",
+    "apelidos": [
+      "close feet leg press"
+    ]
+  },
+  {
+    "id": "close-grip-chin-up",
+    "nome": "Barra fixa supinada fechada",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "close grip chin up",
+      "close grip chin-up"
+    ]
+  },
+  {
+    "id": "close-grip-push-ups",
+    "nome": "Flexão de braços fechada",
+    "grupo": "Tríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "close grip push ups",
+      "close-grip push-up"
+    ]
+  },
+  {
+    "id": "commando-pull-up",
+    "nome": "Barra fixa comando",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "commando pull up",
+      "commando pull-up"
+    ]
+  },
+  {
+    "id": "stretching-crossover-kneeling-hip-flexor-stretch",
+    "nome": "Alongamento de flexores do quadril ajoelhado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "crossover kneeling hip flexor stretch",
+      "stretching crossover kneeling hip flexor stretch"
+    ]
+  },
+  {
+    "id": "decline-dumbbell-bench-press-45-degree",
+    "nome": "Supino declinado com halteres",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "decline dumbbell bench press",
+      "decline dumbbell bench press 45 degree"
+    ]
+  },
+  {
+    "id": "dumbbell-decline-fly-45-degree-1",
+    "nome": "Crucifixo declinado com halteres",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "decline dumbbell fly",
+      "dumbbell decline fly 45 degree 1"
+    ]
+  },
+  {
+    "id": "deep-push-ups",
+    "nome": "Flexão profunda",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "deep push ups",
+      "deep push-up"
+    ]
+  },
+  {
+    "id": "donkey-calf-raise",
+    "nome": "Panturrilha burrinho",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "donkey calf raise"
+    ]
+  },
+  {
+    "id": "dumbbell-alternate-shoulder-press",
+    "nome": "Desenvolvimento alternado com halteres",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell alternate shoulder press",
+      "dumbbell alternating shoulder press"
+    ]
+  },
+  {
+    "id": "dumbbell-arnold-press",
+    "nome": "Desenvolvimento Arnold",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell arnold press"
+    ]
+  },
+  {
+    "id": "dumbbell-behind-back-wrist-curl",
+    "nome": "Rosca de punho atrás do corpo com halteres",
+    "grupo": "Antebraço",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell behind back wrist curl",
+      "dumbbell behind-the-back wrist curl"
+    ]
+  },
+  {
+    "id": "dumbbell-bent-over-row",
+    "nome": "Remada curvada com halteres",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell bent over row",
+      "dumbbell bent-over row"
+    ]
+  },
+  {
+    "id": "dumbbell-biceps-curl",
+    "nome": "Rosca direta com halteres",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell biceps curl"
+    ]
+  },
+  {
+    "id": "dumbbell-close-grip-press",
+    "nome": "Supino fechado com halteres",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell close grip press",
+      "dumbbell close-grip press"
+    ]
+  },
+  {
+    "id": "dumbbell-cross-body-hammer-curl",
+    "nome": "Rosca martelo cruzada",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell cross body hammer curl"
+    ]
+  },
+  {
+    "id": "dumbbell-deadlift",
+    "nome": "Levantamento terra com halteres",
+    "grupo": "Glúteos",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell deadlift"
+    ]
+  },
+  {
+    "id": "dumbbell-fly-on-exercise-ball",
+    "nome": "Crucifixo na bola com halteres",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell fly on exercise ball"
+    ]
+  },
+  {
+    "id": "dumbbell-hammer-grip-incline-bench-row",
+    "nome": "Remada no banco inclinado pegada martelo",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell hammer grip incline bench row"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-bench-press",
+    "nome": "Supino inclinado com halteres",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline bench press"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-curl",
+    "nome": "Rosca inclinada com halteres",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline curl"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-fly",
+    "nome": "Crucifixo inclinado com halteres",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline fly"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-fly-on-exercise-ball",
+    "nome": "Crucifixo inclinado na bola com halteres",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline fly on exercise ball"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-hammer-curl",
+    "nome": "Rosca martelo inclinada",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline hammer curl"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-hammer-press",
+    "nome": "Supino inclinado pegada martelo",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline hammer press"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-rear-lateral-raise",
+    "nome": "Elevação posterior no banco inclinado",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline rear lateral raise"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-row",
+    "nome": "Remada no banco inclinado com halteres",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline row"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-shrug",
+    "nome": "Encolhimento no banco inclinado",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline shrug"
+    ]
+  },
+  {
+    "id": "dumbbell-incline-triceps-extension",
+    "nome": "Tríceps francês no banco inclinado",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell incline triceps extension"
+    ]
+  },
+  {
+    "id": "dumbbell-iron-cross",
+    "nome": "Cruz de ferro com halteres",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell iron cross"
+    ]
+  },
+  {
+    "id": "dumbbell-lying-alternate-extension",
+    "nome": "Tríceps testa alternado com halteres",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell lying alternate extension"
+    ]
+  },
+  {
+    "id": "dumbbell-lying-hammer-press",
+    "nome": "Supino reto pegada martelo",
+    "grupo": "Peito",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell lying hammer press"
+    ]
+  },
+  {
+    "id": "dumbbell-lying-femoral",
+    "nome": "Flexão de pernas deitado com halter",
+    "grupo": "Posterior de coxa",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell lying femoral",
+      "dumbbell lying leg curl"
+    ]
+  },
+  {
+    "id": "dumbbell-lying-rear-delt-row",
+    "nome": "Remada posterior deitado com halteres",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell lying rear delt row"
+    ]
+  },
+  {
+    "id": "dumbbell-lying-triceps-extension",
+    "nome": "Tríceps testa com halteres",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell lying triceps extension"
+    ]
+  },
+  {
+    "id": "dumbbell-one-arm-lateral-raise",
+    "nome": "Elevação lateral unilateral com halter",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell one arm lateral raise"
+    ]
+  },
+  {
+    "id": "dumbbell-one-arm-zottman-preacher-curl",
+    "nome": "Rosca Zottman unilateral no banco Scott",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell one arm zottman preacher curl"
+    ]
+  },
+  {
+    "id": "dumbbell-one-arm-triceps-extension",
+    "nome": "Tríceps francês unilateral com halter",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell one arm triceps extension",
+      "dumbbell one-arm triceps extension"
+    ]
+  },
+  {
+    "id": "dumbbell-over-bench-wrist-curl",
+    "nome": "Rosca de punho no banco com halter",
+    "grupo": "Antebraço",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell over bench wrist curl"
+    ]
+  },
+  {
+    "id": "dumbbell-palm-rotational-bent-over-row",
+    "nome": "Remada curvada com rotação de palma",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell palm rotational bent over row"
+    ]
+  },
+  {
+    "id": "dumbbell-preacher-curl-over-exercise-ball",
+    "nome": "Rosca Scott na bola com halter",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell preacher curl over exercise ball"
+    ]
+  },
+  {
+    "id": "dumbbell-pronate-grip-triceps-extension",
+    "nome": "Tríceps testa pegada pronada com halteres",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell pronate grip triceps extension",
+      "dumbbell pronate-grip triceps extension"
+    ]
+  },
+  {
+    "id": "dumbbell-prone-incline-curl",
+    "nome": "Rosca de bruços no banco inclinado com halteres",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell prone incline curl"
+    ]
+  },
+  {
+    "id": "dumbbell-rear-delt-row",
+    "nome": "Remada posterior com halteres",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell rear delt row"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-calf-raise",
+    "nome": "Panturrilha sentado com halter",
+    "grupo": "Panturrilha",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated calf raise"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-front-raise",
+    "nome": "Elevação frontal sentado com halteres",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated front raise"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-kickback",
+    "nome": "Tríceps coice sentado com halter",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated kickback"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-lateral-raise",
+    "nome": "Elevação lateral sentado com halteres",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated lateral raise"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-neutral-wrist-curl",
+    "nome": "Rosca de punho neutra sentado",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated neutral wrist curl"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-preacher-curl",
+    "nome": "Rosca Scott sentado com halter",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated preacher curl"
+    ]
+  },
+  {
+    "id": "dumbbell-seated-triceps-extension",
+    "nome": "Tríceps francês sentado com halter",
+    "grupo": "Tríceps",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell seated triceps extension"
+    ]
+  },
+  {
+    "id": "dumbbell-shrug",
+    "nome": "Encolhimento com halteres",
+    "grupo": "Costas",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell shrug"
+    ]
+  },
+  {
+    "id": "dumbbell-side-bend",
+    "nome": "Flexão lateral com halter",
+    "grupo": "Abdômen",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell side bend"
+    ]
+  },
+  {
+    "id": "dumbbell-single-leg-calf-raise",
+    "nome": "Panturrilha unilateral com halter",
+    "grupo": "Panturrilha",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell single leg calf raise"
+    ]
+  },
+  {
+    "id": "dumbbell-single-leg-squat",
+    "nome": "Agachamento unilateral com halter",
+    "grupo": "Glúteos",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell single leg squat"
+    ]
+  },
+  {
+    "id": "dumbbell-squat",
+    "nome": "Agachamento com halteres",
+    "grupo": "Glúteos",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell squat"
+    ]
+  },
+  {
+    "id": "dumbbell-standing-calf-raise",
+    "nome": "Panturrilha em pé com halteres",
+    "grupo": "Panturrilha",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell standing calf raise"
+    ]
+  },
+  {
+    "id": "dumbbell-stiff-leg-deadlift",
+    "nome": "Stiff com halteres",
+    "grupo": "Glúteos",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell stiff leg deadlift"
+    ]
+  },
+  {
+    "id": "dumbbell-bar-grip-sumo-squat",
+    "nome": "Agachamento sumô com halter",
+    "grupo": "Glúteos",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell bar grip sumo squat",
+      "dumbbell sumo squat"
+    ]
+  },
+  {
+    "id": "dumbbell-upright-row",
+    "nome": "Remada alta com halteres",
+    "grupo": "Ombros",
+    "equip": "Halter",
+    "apelidos": [
+      "dumbbell upright row"
+    ]
+  },
+  {
+    "id": "stretching-dynamic-chest-stretch",
+    "nome": "Alongamento dinâmico de peitoral",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "dynamic chest stretch",
+      "stretching dynamic chest stretch"
+    ]
+  },
+  {
+    "id": "elliptical",
+    "nome": "Elíptico",
+    "grupo": "Cardio",
+    "equip": "Máquina",
+    "apelidos": [
+      "elliptical",
+      "elliptical trainer"
+    ]
+  },
+  {
+    "id": "sit-up-on-exercise-ball",
+    "nome": "Abdominal na bola",
+    "grupo": "Abdômen",
+    "equip": "Bola",
+    "apelidos": [
+      "exercise ball sit-up",
+      "sit up on exercise ball"
+    ]
+  },
+  {
+    "id": "stretching-spinal-stretch-on-exercise-ball",
+    "nome": "Alongamento da coluna na bola",
+    "grupo": "Lombar",
+    "equip": "Bola",
+    "apelidos": [
+      "exercise ball spinal stretch",
+      "stretching spinal stretch on exercise ball"
+    ]
+  },
+  {
+    "id": "ez-barbell-biceps-curl",
+    "nome": "Rosca direta com barra W",
+    "grupo": "Bíceps",
+    "equip": "Barra",
+    "apelidos": [
+      "ez bar biceps curl",
+      "ez barbell biceps curl"
+    ]
+  },
+  {
+    "id": "ez-barbell-anti-gravity-press",
+    "nome": "Desenvolvimento antigravidade com barra W",
+    "grupo": "Ombros",
+    "equip": "Barra",
+    "apelidos": [
+      "ez barbell anti gravity press"
+    ]
+  },
+  {
+    "id": "stretching-feet-and-ankles-rotation-stretch",
+    "nome": "Rotação de tornozelos",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "feet and ankles rotation stretch",
+      "stretching feet and ankles rotation stretch"
+    ]
+  },
+  {
+    "id": "stretching-feet-and-ankles-stretch",
+    "nome": "Alongamento de pés e tornozelos",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "feet and ankles stretch",
+      "stretching feet and ankles stretch"
+    ]
+  },
+  {
+    "id": "cable-lying-fly-flat-bench-cable-fly",
+    "nome": "Crucifixo reto na polia deitado",
+    "grupo": "Peito",
+    "equip": "Polia",
+    "apelidos": [
+      "cable lying fly flat bench cable fly",
+      "flat bench cable fly"
+    ]
+  },
+  {
+    "id": "stretching-flexion-leg-sit-up",
+    "nome": "Alongamento com flexão do tronco",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "flexion leg sit-up stretch",
+      "stretching flexion leg sit up"
+    ]
+  },
+  {
+    "id": "crunch-floor-female",
+    "nome": "Abdominal no chão",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "crunch floor female",
+      "floor crunch"
+    ]
+  },
+  {
+    "id": "front-plank-female",
+    "nome": "Prancha frontal",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "front plank",
+      "front plank female"
+    ]
+  },
+  {
+    "id": "stretching-front-toe-touch",
+    "nome": "Alongamento de toque nos pés",
+    "grupo": "Posterior de coxa",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "front toe touch stretch",
+      "stretching front toe touch"
+    ]
+  },
+  {
+    "id": "hip-raise-bridge",
+    "nome": "Ponte de glúteo",
+    "grupo": "Glúteos",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "glute bridge",
+      "hip raise bridge"
+    ]
+  },
+  {
+    "id": "hanging-leg-hip-raise",
+    "nome": "Elevação de pernas na barra com quadril",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "hanging leg hip raise"
+    ]
+  },
+  {
+    "id": "hanging-straight-leg-raise",
+    "nome": "Elevação de pernas retas na barra",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "hanging straight leg raise"
+    ]
+  },
+  {
+    "id": "stretching-hip-circles-stretch",
+    "nome": "Círculos de quadril",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "hip circles stretch",
+      "stretching hip circles stretch"
+    ]
+  },
+  {
+    "id": "stretching-hip-extension-stretch",
+    "nome": "Alongamento de extensão de quadril",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "hip extension stretch",
+      "stretching hip extension stretch"
+    ]
+  },
+  {
+    "id": "stretching-hip-flexor-and-quad-stretch",
+    "nome": "Alongamento de flexor do quadril e quadríceps",
+    "grupo": "Quadríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "hip flexor and quadriceps stretch",
+      "stretching hip flexor and quad stretch"
+    ]
+  },
+  {
+    "id": "incline-leg-hip-raise",
+    "nome": "Elevação de pernas no banco inclinado",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "incline leg hip raise"
+    ]
+  },
+  {
+    "id": "incline-push-ups",
+    "nome": "Flexão inclinada",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "incline push ups",
+      "incline push-up"
+    ]
+  },
+  {
+    "id": "inverted-row-between-chairs",
+    "nome": "Remada invertida entre cadeiras",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "inverted row between chairs"
+    ]
+  },
+  {
+    "id": "inverted-row-with-straps",
+    "nome": "Remada invertida com fitas",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "inverted row with straps"
+    ]
+  },
+  {
+    "id": "stretching-iron-cross-stretch",
+    "nome": "Alongamento cruz de ferro",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "iron cross stretch",
+      "stretching iron cross stretch"
+    ]
+  },
+  {
+    "id": "jackknife-pilates",
+    "nome": "Canivete (Pilates)",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "jackknife",
+      "jackknife pilates"
+    ]
+  },
+  {
+    "id": "jack-knife-floor",
+    "nome": "Canivete no chão",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "jack knife floor",
+      "jackknife floor"
+    ]
+  },
+  {
+    "id": "jack-split-crunches",
+    "nome": "Abdominal canivete dividido",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "jack split crunches",
+      "jackknife split crunch"
+    ]
+  },
+  {
+    "id": "jump-rope",
+    "nome": "Pular corda",
+    "grupo": "Cardio",
+    "equip": "Corda",
+    "apelidos": [
+      "jump rope"
+    ]
+  },
+  {
+    "id": "jump-step-up",
+    "nome": "Salto no degrau",
+    "grupo": "Quadríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "jump step up",
+      "jump step-up"
+    ]
+  },
+  {
+    "id": "jumping-jack",
+    "nome": "Polichinelo",
+    "grupo": "Cardio",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "jumping jack"
+    ]
+  },
+  {
+    "id": "kettlebell-deadlift",
+    "nome": "Levantamento terra com kettlebell",
+    "grupo": "Glúteos",
+    "equip": "Kettlebell",
+    "apelidos": [
+      "kettlebell deadlift"
+    ]
+  },
+  {
+    "id": "stretching-kneeling-back-rotation-stretch",
+    "nome": "Rotação de coluna ajoelhado",
+    "grupo": "Lombar",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "kneeling back rotation stretch",
+      "stretching kneeling back rotation stretch"
+    ]
+  },
+  {
+    "id": "stretching-kneeling-lat-stretch",
+    "nome": "Alongamento de dorsal ajoelhado",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "kneeling lat stretch",
+      "stretching kneeling lat stretch"
+    ]
+  },
+  {
+    "id": "stretching-kneeling-triceps-extension",
+    "nome": "Alongamento de tríceps ajoelhado",
+    "grupo": "Tríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "kneeling triceps stretch",
+      "stretching kneeling triceps extension"
+    ]
+  },
+  {
+    "id": "landmine-180",
+    "nome": "Rotação 180° com landmine",
+    "grupo": "Abdômen",
+    "equip": "Barra",
+    "apelidos": [
+      "landmine 180"
+    ]
+  },
+  {
+    "id": "crunch-leg-raise",
+    "nome": "Abdominal com elevação de pernas",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "crunch leg raise",
+      "leg raise crunch"
+    ]
+  },
+  {
+    "id": "leg-raise-hip-lift",
+    "nome": "Elevação de pernas com quadril",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "leg raise hip lift",
+      "leg raise with hip lift"
+    ]
+  },
+  {
+    "id": "lever-high-row",
+    "nome": "Remada alta na máquina",
+    "grupo": "Costas",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever high row"
+    ]
+  },
+  {
+    "id": "lever-horizontal-leg-press",
+    "nome": "Leg press horizontal",
+    "grupo": "Quadríceps",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever horizontal leg press"
+    ]
+  },
+  {
+    "id": "lever-kneeling-leg-curl",
+    "nome": "Flexora ajoelhado na máquina",
+    "grupo": "Posterior de coxa",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever kneeling leg curl"
+    ]
+  },
+  {
+    "id": "lever-reverse-hyperextension",
+    "nome": "Hiperextensão reversa na máquina",
+    "grupo": "Glúteos",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever reverse hyperextension"
+    ]
+  },
+  {
+    "id": "lever-reverse-t-bar-row",
+    "nome": "Remada T inversa na máquina",
+    "grupo": "Costas",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever reverse t bar row",
+      "lever reverse t-bar row"
+    ]
+  },
+  {
+    "id": "lever-seated-calf-raise",
+    "nome": "Panturrilha sentado na máquina",
+    "grupo": "Panturrilha",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever seated calf raise"
+    ]
+  },
+  {
+    "id": "lever-seated-crunch-1",
+    "nome": "Abdominal sentado na máquina",
+    "grupo": "Abdômen",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever seated crunch",
+      "lever seated crunch 1"
+    ]
+  },
+  {
+    "id": "lever-seated-dips",
+    "nome": "Mergulho sentado na máquina",
+    "grupo": "Tríceps",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever seated dip",
+      "lever seated dips"
+    ]
+  },
+  {
+    "id": "lever-seated-hip-adduction",
+    "nome": "Adutora na máquina",
+    "grupo": "Pernas",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever seated hip adduction"
+    ]
+  },
+  {
+    "id": "lever-shrug",
+    "nome": "Encolhimento na máquina",
+    "grupo": "Costas",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever shrug"
+    ]
+  },
+  {
+    "id": "lever-standing-hip-extension",
+    "nome": "Extensão de quadril em pé na máquina",
+    "grupo": "Glúteos",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever standing hip extension"
+    ]
+  },
+  {
+    "id": "lever-standing-rear-kick",
+    "nome": "Coice na máquina em pé",
+    "grupo": "Glúteos",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever standing rear kick"
+    ]
+  },
+  {
+    "id": "lever-t-bar-row",
+    "nome": "Remada T na máquina",
+    "grupo": "Costas",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever t bar row",
+      "lever t-bar row"
+    ]
+  },
+  {
+    "id": "lever-triceps-extension",
+    "nome": "Tríceps na máquina",
+    "grupo": "Tríceps",
+    "equip": "Máquina",
+    "apelidos": [
+      "lever triceps extension"
+    ]
+  },
+  {
+    "id": "lying-hip-lift-on-stability-ball",
+    "nome": "Elevação de quadril deitado na bola",
+    "grupo": "Glúteos",
+    "equip": "Bola",
+    "apelidos": [
+      "lying hip lift on stability ball"
+    ]
+  },
+  {
+    "id": "stretching-quadriceps-lying-stretch",
+    "nome": "Alongamento de quadríceps deitado",
+    "grupo": "Quadríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "lying quadriceps stretch",
+      "stretching quadriceps lying stretch"
+    ]
+  },
+  {
+    "id": "lying-scissor-kick-female",
+    "nome": "Tesoura deitado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "lying scissor kick",
+      "lying scissor kick female"
+    ]
+  },
+  {
+    "id": "lying-straight-leg-raise",
+    "nome": "Elevação de pernas retas deitado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "lying straight leg raise"
+    ]
+  },
+  {
+    "id": "medicine-ball-sit-up-wall",
+    "nome": "Abdominal com medicine ball na parede",
+    "grupo": "Abdômen",
+    "equip": "Peso",
+    "apelidos": [
+      "medicine ball sit up wall",
+      "medicine ball wall sit-up"
+    ]
+  },
+  {
+    "id": "stretching-middle-back-stretch-1",
+    "nome": "Alongamento da parte média das costas",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "middle back stretch",
+      "stretching middle back stretch 1"
+    ]
+  },
+  {
+    "id": "military-press",
+    "nome": "Desenvolvimento militar com barra",
+    "grupo": "Ombros",
+    "equip": "Barra",
+    "apelidos": [
+      "military press"
+    ]
+  },
+  {
+    "id": "stretching-neck-side-stretch",
+    "nome": "Alongamento lateral do pescoço",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "neck side stretch",
+      "stretching neck side stretch"
+    ]
+  },
+  {
+    "id": "old-school-reverse-extensions",
+    "nome": "Mergulho invertido clássico",
+    "grupo": "Tríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "old school reverse extensions"
+    ]
+  },
+  {
+    "id": "otis-ups",
+    "nome": "Abdominal Otis (com peso)",
+    "grupo": "Abdômen",
+    "equip": "Peso",
+    "apelidos": [
+      "otis ups",
+      "otis-up"
+    ]
+  },
+  {
+    "id": "stretching-above-head-chest-stretch",
+    "nome": "Alongamento de peitoral acima da cabeça",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "overhead chest stretch",
+      "stretching above head chest stretch"
+    ]
+  },
+  {
+    "id": "stretching-peroneals-stretch",
+    "nome": "Alongamento de fibulares",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "peroneals stretch",
+      "stretching peroneals stretch"
+    ]
+  },
+  {
+    "id": "corkscrew-pilates",
+    "nome": "Saca-rolhas (Pilates)",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "corkscrew pilates",
+      "pilates corkscrew"
+    ]
+  },
+  {
+    "id": "hundred-pilates",
+    "nome": "Cem (Pilates)",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "hundred pilates",
+      "pilates hundred"
+    ]
+  },
+  {
+    "id": "stretching-plyo-side-lunge-stretch",
+    "nome": "Alongamento de afundo lateral",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "plyometric side lunge stretch",
+      "stretching plyo side lunge stretch"
+    ]
+  },
+  {
+    "id": "chin-ups-pull-ups",
+    "nome": "Barra fixa (variações)",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "chin ups pull ups",
+      "pull-up / chin-up"
+    ]
+  },
+  {
+    "id": "rear-decline-bridge",
+    "nome": "Ponte reversa",
+    "grupo": "Glúteos",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "rear decline bridge"
+    ]
+  },
+  {
+    "id": "stretching-rear-deltoid-stretch",
+    "nome": "Alongamento de deltoide posterior",
+    "grupo": "Ombros",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "rear deltoid stretch",
+      "stretching rear deltoid stretch"
+    ]
+  },
+  {
+    "id": "stretching-hip-flexor-stretch-rear-foot-elevated",
+    "nome": "Alongamento de flexor do quadril com pé elevado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "rear foot elevated hip flexor stretch",
+      "stretching hip flexor stretch rear foot elevated"
+    ]
+  },
+  {
+    "id": "band-high-fly",
+    "nome": "Crucifixo alto com elástico",
+    "grupo": "Peito",
+    "equip": "Elástico",
+    "apelidos": [
+      "band high fly",
+      "resistance band high fly"
+    ]
+  },
+  {
+    "id": "reverse-crunch-female",
+    "nome": "Abdominal invertido",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "reverse crunch",
+      "reverse crunch female"
+    ]
+  },
+  {
+    "id": "stretching-reverse-dip",
+    "nome": "Alongamento de ombros no banco",
+    "grupo": "Tríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "reverse dip stretch",
+      "stretching reverse dip"
+    ]
+  },
+  {
+    "id": "reverse-grip-machine-lat-pulldown",
+    "nome": "Puxada supinada na máquina",
+    "grupo": "Costas",
+    "equip": "Máquina",
+    "apelidos": [
+      "reverse grip machine lat pulldown"
+    ]
+  },
+  {
+    "id": "reverse-grip-pull-up",
+    "nome": "Barra fixa supinada",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "reverse grip pull up",
+      "reverse grip pull-up"
+    ]
+  },
+  {
+    "id": "cable-bar-lateral-pulldown-reverse-grip",
+    "nome": "Puxada supinada na polia",
+    "grupo": "Costas",
+    "equip": "Polia",
+    "apelidos": [
+      "cable bar lateral pulldown reverse grip",
+      "reverse-grip cable lat pulldown"
+    ]
+  },
+  {
+    "id": "ring-high-row",
+    "nome": "Remada alta nas argolas",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "ring high row"
+    ]
+  },
+  {
+    "id": "rotate-push-up-female",
+    "nome": "Flexão com rotação",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "rotate push up female",
+      "rotational push-up"
+    ]
+  },
+  {
+    "id": "stretching-runners-stretch",
+    "nome": "Alongamento do corredor",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "runner's stretch",
+      "stretching runners stretch"
+    ]
+  },
+  {
+    "id": "running",
+    "nome": "Corrida",
+    "grupo": "Cardio",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "running"
+    ]
+  },
+  {
+    "id": "russian-twist-on-stability-ball-arms-straight",
+    "nome": "Giro russo na bola com braços retos",
+    "grupo": "Abdômen",
+    "equip": "Bola",
+    "apelidos": [
+      "russian twist on stability ball (arms straight)",
+      "russian twist on stability ball arms straight"
+    ]
+  },
+  {
+    "id": "scapula-dips",
+    "nome": "Mergulho escapular",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "scapula dips"
+    ]
+  },
+  {
+    "id": "stretching-sitting-bent-over-back-stretch",
+    "nome": "Alongamento das costas sentado inclinado",
+    "grupo": "Lombar",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated bent over back stretch",
+      "stretching sitting bent over back stretch"
+    ]
+  },
+  {
+    "id": "stretching-boat-stretch",
+    "nome": "Alongamento barco sentado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated boat stretch",
+      "stretching boat stretch"
+    ]
+  },
+  {
+    "id": "cable-seated-row-wide-grip",
+    "nome": "Remada sentada pegada aberta na polia",
+    "grupo": "Costas",
+    "equip": "Polia",
+    "apelidos": [
+      "cable seated row wide grip",
+      "seated cable row (wide-grip)"
+    ]
+  },
+  {
+    "id": "stretching-seated-calf-stretch",
+    "nome": "Alongamento de panturrilha sentado",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated calf stretch",
+      "stretching seated calf stretch"
+    ]
+  },
+  {
+    "id": "stretching-seated-lower-back-stretch",
+    "nome": "Alongamento lombar sentado",
+    "grupo": "Lombar",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated lower back stretch",
+      "stretching seated lower back stretch"
+    ]
+  },
+  {
+    "id": "stretching-seated-shoulder-flexor-depresor-retractor",
+    "nome": "Alongamento de ombros sentado",
+    "grupo": "Ombros",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated shoulder flexor, depressor, retractor stretch",
+      "stretching seated shoulder flexor depresor retractor"
+    ]
+  },
+  {
+    "id": "seated-twist-straight-arm",
+    "nome": "Rotação de tronco sentado",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated straight arm twist",
+      "seated twist straight arm"
+    ]
+  },
+  {
+    "id": "seated-twist-on-stability-ball",
+    "nome": "Rotação de tronco sentado na bola",
+    "grupo": "Abdômen",
+    "equip": "Bola",
+    "apelidos": [
+      "seated twist on stability ball"
+    ]
+  },
+  {
+    "id": "stretching-seated-twist-straight-arm",
+    "nome": "Alongamento de rotação sentado",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated twist stretch (straight arm)",
+      "stretching seated twist straight arm"
+    ]
+  },
+  {
+    "id": "stretching-seated-wide-angle-pose-sequence",
+    "nome": "Sequência de pernas abertas sentado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "seated wide angle pose sequence",
+      "stretching seated wide angle pose sequence"
+    ]
+  },
+  {
+    "id": "pull-up-shoulder-grip",
+    "nome": "Barra fixa na largura dos ombros",
+    "grupo": "Costas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "pull up shoulder grip",
+      "shoulder-width pull-up"
+    ]
+  },
+  {
+    "id": "side-bend-on-stability-ball",
+    "nome": "Flexão lateral na bola",
+    "grupo": "Abdômen",
+    "equip": "Bola",
+    "apelidos": [
+      "side bend on stability ball"
+    ]
+  },
+  {
+    "id": "stretching-slopes-towards-stretch",
+    "nome": "Alongamento de inclinação lateral",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "side bend stretch",
+      "stretching slopes towards stretch"
+    ]
+  },
+  {
+    "id": "side-bridge-side-plank",
+    "nome": "Prancha lateral",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "side bridge side plank",
+      "side plank"
+    ]
+  },
+  {
+    "id": "stretching-side-wrist-pull-stretch",
+    "nome": "Alongamento lateral de punho",
+    "grupo": "Antebraço",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "side wrist pull stretch",
+      "stretching side wrist pull stretch"
+    ]
+  },
+  {
+    "id": "single-dumbbell-stiff-leg-deadlift",
+    "nome": "Stiff com um halter",
+    "grupo": "Posterior de coxa",
+    "equip": "Halter",
+    "apelidos": [
+      "single dumbbell stiff leg deadlift",
+      "single dumbbell stiff-leg deadlift"
+    ]
+  },
+  {
+    "id": "stretching-single-leg-stretch-bent-knee",
+    "nome": "Alongamento de perna com joelho dobrado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "single leg stretch (bent knee)",
+      "stretching single leg stretch bent knee"
+    ]
+  },
+  {
+    "id": "stretching-single-straight-leg-stretch",
+    "nome": "Alongamento de perna reta",
+    "grupo": "Posterior de coxa",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "single straight leg stretch",
+      "stretching single straight leg stretch"
+    ]
+  },
+  {
+    "id": "sit-ups",
+    "nome": "Abdominal completo",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "sit ups",
+      "sit-up"
+    ]
+  },
+  {
+    "id": "sit-up",
+    "nome": "Abdominal completo (variação)",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "sit up",
+      "sit-up"
+    ]
+  },
+  {
+    "id": "sled-45-degree-leg-wide-press",
+    "nome": "Leg press 45° pés afastados",
+    "grupo": "Quadríceps",
+    "equip": "Máquina",
+    "apelidos": [
+      "sled 45 degree leg wide press",
+      "sled 45 degree wide leg press"
+    ]
+  },
+  {
+    "id": "smith-chair-squat",
+    "nome": "Agachamento sentado no Smith",
+    "grupo": "Quadríceps",
+    "equip": "Smith",
+    "apelidos": [
+      "smith chair squat"
+    ]
+  },
+  {
+    "id": "smith-calf-raise",
+    "nome": "Panturrilha no Smith",
+    "grupo": "Panturrilha",
+    "equip": "Smith",
+    "apelidos": [
+      "smith calf raise",
+      "smith machine calf raise"
+    ]
+  },
+  {
+    "id": "smith-deadlift-deadlift-1",
+    "nome": "Levantamento terra no Smith",
+    "grupo": "Lombar",
+    "equip": "Smith",
+    "apelidos": [
+      "smith deadlift deadlift 1",
+      "smith machine deadlift"
+    ]
+  },
+  {
+    "id": "smith-leg-press",
+    "nome": "Leg press no Smith",
+    "grupo": "Quadríceps",
+    "equip": "Smith",
+    "apelidos": [
+      "smith leg press",
+      "smith machine leg press"
+    ]
+  },
+  {
+    "id": "smith-seated-shoulder-press",
+    "nome": "Desenvolvimento sentado no Smith",
+    "grupo": "Ombros",
+    "equip": "Smith",
+    "apelidos": [
+      "smith seated shoulder press"
+    ]
+  },
+  {
+    "id": "spell-caster",
+    "nome": "Spell caster (rotação com halter)",
+    "grupo": "Abdômen",
+    "equip": "Halter",
+    "apelidos": [
+      "spell caster"
+    ]
+  },
+  {
+    "id": "stretching-spine-stretch",
+    "nome": "Alongamento da coluna",
+    "grupo": "Lombar",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "spine stretch",
+      "stretching spine stretch"
+    ]
+  },
+  {
+    "id": "squat",
+    "nome": "Agachamento com peso corporal",
+    "grupo": "Quadríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "squat"
+    ]
+  },
+  {
+    "id": "leg-curl-on-stability-ball",
+    "nome": "Flexão de pernas na bola",
+    "grupo": "Posterior de coxa",
+    "equip": "Bola",
+    "apelidos": [
+      "leg curl on stability ball",
+      "stability ball leg curl"
+    ]
+  },
+  {
+    "id": "crunch-legs-on-stability-ball",
+    "nome": "Abdominal com pernas elevadas na bola",
+    "grupo": "Abdômen",
+    "equip": "Bola",
+    "apelidos": [
+      "crunch legs on stability ball",
+      "stability ball leg elevated crunch"
+    ]
+  },
+  {
+    "id": "stretching-stairs-calf-stretch",
+    "nome": "Alongamento de panturrilha no degrau",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "stairs calf stretch",
+      "stretching stairs calf stretch"
+    ]
+  },
+  {
+    "id": "stretching-adductor-stretch",
+    "nome": "Alongamento de adutores em pé",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing adductor stretch",
+      "stretching adductor stretch"
+    ]
+  },
+  {
+    "id": "stretching-standing-back-rotation-stretch",
+    "nome": "Rotação de coluna em pé",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing back rotation stretch",
+      "stretching standing back rotation stretch"
+    ]
+  },
+  {
+    "id": "stretching-standing-bench-calf-stretch",
+    "nome": "Alongamento de panturrilha com apoio",
+    "grupo": "Panturrilha",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing bench calf stretch",
+      "stretching standing bench calf stretch"
+    ]
+  },
+  {
+    "id": "stretching-hamstring-stretch",
+    "nome": "Alongamento de posterior de coxa em pé",
+    "grupo": "Posterior de coxa",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing hamstring stretch",
+      "stretching hamstring stretch"
+    ]
+  },
+  {
+    "id": "stretching-ceiling-look-stretch",
+    "nome": "Alongamento de quadril e abdômen em pé",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing hip flexor and abdominal stretch",
+      "stretching ceiling look stretch"
+    ]
+  },
+  {
+    "id": "stretching-knee-raise",
+    "nome": "Alongamento com joelho elevado",
+    "grupo": "Pernas",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing knee raise stretch",
+      "stretching knee raise"
+    ]
+  },
+  {
+    "id": "stretching-standing-lateral-stretch-1",
+    "nome": "Alongamento lateral em pé",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing lateral stretch",
+      "stretching standing lateral stretch 1"
+    ]
+  },
+  {
+    "id": "stretching-quadriceps-stretch",
+    "nome": "Alongamento de quadríceps em pé",
+    "grupo": "Quadríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing quadriceps stretch",
+      "stretching quadriceps stretch"
+    ]
+  },
+  {
+    "id": "stretching-standing-reach-up-back-rotation-stretch",
+    "nome": "Alongamento de peitoral e rotação de tronco",
+    "grupo": "Peito",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing reach up back rotation stretch",
+      "stretching standing reach up back rotation stretch"
+    ]
+  },
+  {
+    "id": "stretching-standing-side-bend-bent-arm",
+    "nome": "Alongamento lateral com braço dobrado",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing side bend stretch (bent arm)",
+      "stretching standing side bend bent arm"
+    ]
+  },
+  {
+    "id": "stretching-standing-wheel-rollout",
+    "nome": "Roda abdominal em pé",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "standing wheel rollout",
+      "stretching standing wheel rollout"
+    ]
+  },
+  {
+    "id": "stationary-bike",
+    "nome": "Bicicleta ergométrica",
+    "grupo": "Cardio",
+    "equip": "Máquina",
+    "apelidos": [
+      "stationary bike"
+    ]
+  },
+  {
+    "id": "crunch-straight-leg-up",
+    "nome": "Abdominal com pernas elevadas",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "crunch straight leg up",
+      "straight-leg up crunch"
+    ]
+  },
+  {
+    "id": "lying-supine-dumbbell-curl",
+    "nome": "Rosca deitado com halteres",
+    "grupo": "Bíceps",
+    "equip": "Halter",
+    "apelidos": [
+      "lying supine dumbbell curl",
+      "supine dumbbell biceps curl"
+    ]
+  },
+  {
+    "id": "treadmill-running",
+    "nome": "Corrida na esteira",
+    "grupo": "Cardio",
+    "equip": "Máquina",
+    "apelidos": [
+      "treadmill running"
+    ]
+  },
+  {
+    "id": "triceps-dips",
+    "nome": "Mergulho de tríceps",
+    "grupo": "Tríceps",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "triceps dips"
+    ]
+  },
+  {
+    "id": "twisting-crunch",
+    "nome": "Abdominal oblíquo com rotação",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "twisting crunch"
+    ]
+  },
+  {
+    "id": "v-up",
+    "nome": "Abdominal em V",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "v up",
+      "v-up"
+    ]
+  },
+  {
+    "id": "vertical-leg-raise-on-parallel-bars",
+    "nome": "Elevação de pernas nas paralelas",
+    "grupo": "Abdômen",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "vertical leg raise (on parallel bars)",
+      "vertical leg raise on parallel bars"
+    ]
+  },
+  {
+    "id": "walk-wave-machine",
+    "nome": "Simulador de caminhada (walk wave)",
+    "grupo": "Cardio",
+    "equip": "Máquina",
+    "apelidos": [
+      "walk wave machine"
+    ]
+  },
+  {
+    "id": "weighted-leg-extension-crunch",
+    "nome": "Abdominal com extensão de pernas e peso",
+    "grupo": "Abdômen",
+    "equip": "Peso",
+    "apelidos": [
+      "weighted leg extension crunch"
+    ]
+  },
+  {
+    "id": "weighted-lying-twist",
+    "nome": "Rotação deitado com peso",
+    "grupo": "Abdômen",
+    "equip": "Peso",
+    "apelidos": [
+      "weighted lying twist"
+    ]
+  },
+  {
+    "id": "weighted-sissy-squat",
+    "nome": "Agachamento sissy com peso",
+    "grupo": "Quadríceps",
+    "equip": "Peso",
+    "apelidos": [
+      "weighted sissy squat"
+    ]
+  },
+  {
+    "id": "weighted-standing-curl",
+    "nome": "Rosca em pé com peso",
+    "grupo": "Bíceps",
+    "equip": "Peso",
+    "apelidos": [
+      "weighted standing curl"
+    ]
+  },
+  {
+    "id": "stretching-wrist-circles",
+    "nome": "Círculos de punho",
+    "grupo": "Antebraço",
+    "equip": "Peso corporal",
+    "apelidos": [
+      "stretching wrist circles",
+      "wrist circles"
+    ]
   }
 ]
