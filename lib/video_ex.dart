@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -75,6 +76,16 @@ _Fonte? _fonteVideo(String exId, _Fontes f, [String nome = '']) {
 // ---------- Download com cache no aparelho ----------
 final Map<String, Future<File>> _baixando = {};
 
+/// Último erro de download (para mostrar na tela e facilitar o diagnóstico).
+String ultimoErroVideo = '';
+
+String _descreverErro(Object e) {
+  if (e is HttpException) return e.message;
+  if (e is SocketException) return 'sem conexão com o servidor (${e.message})';
+  if (e is TimeoutException) return 'tempo esgotado';
+  return '$e';
+}
+
 Future<File> _arquivoDoCache(String url) async {
   final base = await getApplicationSupportDirectory();
   final pasta = Directory('${base.path}/videos_cache');
@@ -115,6 +126,7 @@ Future<File> _baixar(String url) async {
     await tmp.rename(alvo.path);
     return alvo;
   } catch (e) {
+    ultimoErroVideo = _descreverErro(e);
     try {
       if (await tmp.exists()) await tmp.delete();
     } catch (_) {}
@@ -199,7 +211,8 @@ class _PlayerLoopEstado extends State<_PlayerLoop> {
       await ctl.play();
       ctl.addListener(_ouvir);
       if (mounted) setState(() => _pronto = true);
-    } catch (_) {
+    } catch (e) {
+      if (ultimoErroVideo.isEmpty) ultimoErroVideo = _descreverErro(e);
       if (mounted) setState(() => _erro = true);
     }
   }
@@ -210,6 +223,7 @@ class _PlayerLoopEstado extends State<_PlayerLoop> {
     antigo?.removeListener(_ouvir);
     await antigo?.dispose();
     if (!mounted) return;
+    ultimoErroVideo = '';
     setState(() {
       _erro = false;
       _pronto = false;
@@ -242,18 +256,27 @@ class _PlayerLoopEstado extends State<_PlayerLoop> {
   Widget build(BuildContext context) {
     if (_erro) {
       return _caixa(
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.cloud_off_rounded, color: Colors.white54, size: 36),
-              SizedBox(height: 8),
-              Text(
-                'Não consegui carregar o vídeo.\nConfira a internet e toque para tentar de novo.',
+              const Icon(Icons.cloud_off_rounded,
+                  color: Colors.white54, size: 36),
+              const SizedBox(height: 8),
+              const Text(
+                'Não consegui carregar o vídeo.\nToque para tentar de novo.',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white70, fontSize: 13),
               ),
+              if (ultimoErroVideo.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                Text(
+                  'Motivo: $ultimoErroVideo',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white38, fontSize: 11),
+                ),
+              ],
             ],
           ),
         ),
@@ -535,6 +558,7 @@ class _DialogoBaixarTodosEstado extends State<_DialogoBaixarTodos> {
   }
 
   Future<void> _baixarTodos() async {
+    ultimoErroVideo = '';
     setState(() {
       _rodando = true;
       _fim = false;
@@ -615,6 +639,13 @@ class _DialogoBaixarTodosEstado extends State<_DialogoBaixarTodos> {
             'No celular agora: $_arquivos vídeos (${_mb(_bytes)})',
             style: const TextStyle(color: kMudo, fontSize: 12),
           ),
+          if (_falhas > 0 && ultimoErroVideo.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(
+              'Último erro: $ultimoErroVideo',
+              style: const TextStyle(color: Colors.redAccent, fontSize: 12),
+            ),
+          ],
         ],
       ),
       actions: [

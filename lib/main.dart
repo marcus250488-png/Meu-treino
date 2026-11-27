@@ -172,7 +172,11 @@ class _ShellEstado extends State<Shell> with SingleTickerProviderStateMixin {
             return Transform.scale(
               scale: escala,
               child: sel
-                  ? AnelBrilho(cor: Colors.white, raio: 30, child: corpo)
+                  ? AnelBrilho(
+                      cor: Colors.white,
+                      raio: 30,
+                      intensidade: 0.4,
+                      child: corpo)
                   : corpo,
             );
           },

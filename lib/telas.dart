@@ -74,7 +74,13 @@ class AnelBrilho extends StatefulWidget {
   final Widget child;
   final Color cor;
   final double raio;
-  const AnelBrilho({required this.child, this.cor = kAzul, this.raio = 16});
+  /// 1.0 = brilho cheio; valores menores deixam o anel mais discreto.
+  final double intensidade;
+  const AnelBrilho(
+      {required this.child,
+      this.cor = kAzul,
+      this.raio = 16,
+      this.intensidade = 1.0});
   @override
   State<AnelBrilho> createState() => AnelBrilhoEstado();
 }
@@ -97,7 +103,8 @@ class AnelBrilhoEstado extends State<AnelBrilho>
       animation: _c,
       child: widget.child,
       builder: (context, child) => CustomPaint(
-        foregroundPainter: AnelBrilhoPainter(_c.value, widget.cor, widget.raio),
+        foregroundPainter: AnelBrilhoPainter(
+            _c.value, widget.cor, widget.raio, widget.intensidade),
         child: child,
       ),
     );
@@ -108,19 +115,22 @@ class AnelBrilhoPainter extends CustomPainter {
   final double t;
   final Color cor;
   final double raio;
-  AnelBrilhoPainter(this.t, [this.cor = kAzul, this.raio = 16]);
+  final double intensidade;
+  AnelBrilhoPainter(this.t,
+      [this.cor = kAzul, this.raio = 16, this.intensidade = 1.0]);
 
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Offset.zero & size;
     final rr =
         RRect.fromRectAndRadius(rect.deflate(1), Radius.circular(raio));
+    final k = intensidade.clamp(0.0, 1.0);
     final shader = SweepGradient(
       colors: [
         cor.withOpacity(0),
-        cor,
-        Colors.white,
-        cor,
+        cor.withOpacity(k),
+        Colors.white.withOpacity(k),
+        cor.withOpacity(k),
         cor.withOpacity(0),
       ],
       stops: const [0.0, 0.3, 0.42, 0.54, 1.0],
@@ -132,7 +142,7 @@ class AnelBrilhoPainter extends CustomPainter {
         Paint()
           ..shader = shader
           ..style = PaintingStyle.stroke
-          ..strokeWidth = 4
+          ..strokeWidth = 4 * k
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4));
     // linha fina e nítida
     canvas.drawRRect(
@@ -145,7 +155,10 @@ class AnelBrilhoPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant AnelBrilhoPainter old) =>
-      old.t != t || old.cor != cor || old.raio != raio;
+      old.t != t ||
+      old.cor != cor ||
+      old.raio != raio ||
+      old.intensidade != intensidade;
 }
 
 Widget _envolveSel(bool sel, Widget child) =>
