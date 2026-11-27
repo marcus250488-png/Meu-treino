@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'state.dart';
 import 'nivel.dart';
 import 'telas.dart';
-import 'video_ex.dart' show abrirBaixarVideosDoPlano;
+import 'video_ex.dart' show abrirBaixarVideosDoPlano, abrirBaixarTodosVideos;
 import 'edicao.dart';
 import 'passos.dart';
 import 'sessao_detalhe.dart';
@@ -564,6 +564,26 @@ class ConfigTela extends StatelessWidget {
                     style: TextStyle(color: kMudo)),
                 value: app.manterTela,
                 onChanged: (v) => app.setManterTela(v),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Vidro(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Vídeos offline', style: titulo(26)),
+                  const SizedBox(height: 6),
+                  const Text(
+                      'Baixe todos os vídeos de execução para o celular e use sem internet. Recomendado no Wi-Fi.',
+                      style: TextStyle(color: kMudo)),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    style: estiloContorno,
+                    onPressed: () => abrirBaixarTodosVideos(context),
+                    icon: const Icon(Icons.download_for_offline_outlined),
+                    label: const Text('Baixar todos os vídeos'),
+                  ),
+                ],
               ),
             ),
           ],

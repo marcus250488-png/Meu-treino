@@ -108,7 +108,10 @@ Future<File> _baixar(String url) async {
       throw HttpException('HTTP ${resp.statusCode}');
     }
     final sink = tmp.openWrite();
-    await resp.pipe(sink).timeout(const Duration(minutes: 3));
+    await resp
+        .timeout(const Duration(seconds: 30))
+        .pipe(sink)
+        .timeout(const Duration(minutes: 5));
     await tmp.rename(alvo.path);
     return alvo;
   } catch (e) {
@@ -445,6 +448,189 @@ class _DialogoBaixarVideosEstado extends State<_DialogoBaixarVideos> {
           onPressed: () => Navigator.pop(context),
           child: Text(_fim ? 'Fechar' : 'Cancelar'),
         ),
+      ],
+    );
+  }
+}
+
+// ---------- Baixar TODOS os vídeos de uma vez (use no Wi-Fi) ----------
+Future<Directory> _pastaCache() async {
+  final base = await getApplicationSupportDirectory();
+  final pasta = Directory('${base.path}/videos_cache');
+  if (!await pasta.exists()) await pasta.create(recursive: true);
+  return pasta;
+}
+
+/// [quantidade de vídeos baixados, bytes ocupados].
+Future<List<int>> resumoVideosBaixados() async {
+  var n = 0, bytes = 0;
+  try {
+    final pasta = await _pastaCache();
+    await for (final e in pasta.list()) {
+      if (e is File && !e.path.endsWith('.part')) {
+        n++;
+        bytes += await e.length();
+      }
+    }
+  } catch (_) {}
+  return [n, bytes];
+}
+
+Future<void> apagarVideosBaixados() async {
+  final pasta = await _pastaCache();
+  if (await pasta.exists()) await pasta.delete(recursive: true);
+}
+
+String _mb(int bytes) => '${(bytes / 1048576).toStringAsFixed(0)} MB';
+
+Future<void> abrirBaixarTodosVideos(BuildContext context) {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    builder: (_) => const _DialogoBaixarTodos(),
+  );
+}
+
+class _DialogoBaixarTodos extends StatefulWidget {
+  const _DialogoBaixarTodos();
+  @override
+  State<_DialogoBaixarTodos> createState() => _DialogoBaixarTodosEstado();
+}
+
+class _DialogoBaixarTodosEstado extends State<_DialogoBaixarTodos> {
+  List<String> _urls = [];
+  int _ok = 0, _falhas = 0, _arquivos = 0, _bytes = 0;
+  bool _pronto = false, _rodando = false, _fim = false, _cancelado = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _preparar();
+  }
+
+  @override
+  void dispose() {
+    _cancelado = true;
+    super.dispose();
+  }
+
+  Future<void> _atualizarResumo() async {
+    final r = await resumoVideosBaixados();
+    if (!mounted) return;
+    setState(() {
+      _arquivos = r[0];
+      _bytes = r[1];
+    });
+  }
+
+  Future<void> _preparar() async {
+    final f = await _fontes();
+    final u = f.urls.values.toSet().toList()..sort();
+    if (!mounted) return;
+    setState(() {
+      _urls = u;
+      _pronto = true;
+    });
+    await _atualizarResumo();
+  }
+
+  Future<void> _baixarTodos() async {
+    setState(() {
+      _rodando = true;
+      _fim = false;
+      _cancelado = false;
+      _ok = 0;
+      _falhas = 0;
+    });
+    final fila = List<String>.from(_urls);
+    var i = 0;
+    Future<void> trabalhador() async {
+      while (!_cancelado && mounted) {
+        if (i >= fila.length) return;
+        final u = fila[i++];
+        try {
+          await baixarVideoCache(u);
+          if (mounted) setState(() => _ok++);
+        } catch (_) {
+          if (mounted) setState(() => _falhas++);
+        }
+        if ((_ok + _falhas) % 10 == 0) _atualizarResumo();
+      }
+    }
+
+    await Future.wait([trabalhador(), trabalhador(), trabalhador()]);
+    if (!mounted) return;
+    setState(() {
+      _rodando = false;
+      _fim = !_cancelado;
+    });
+    await _atualizarResumo();
+  }
+
+  Future<void> _apagar() async {
+    await apagarVideosBaixados();
+    if (!mounted) return;
+    setState(() {
+      _fim = false;
+      _ok = 0;
+      _falhas = 0;
+    });
+    await _atualizarResumo();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final total = _urls.length;
+    final feitos = _ok + _falhas;
+    final String msg;
+    if (!_pronto) {
+      msg = 'Procurando os vídeos…';
+    } else if (_rodando && _cancelado) {
+      msg = 'Parando…';
+    } else if (_rodando) {
+      msg = 'Baixando… $feitos de $total. Mantenha o app aberto.';
+    } else if (_fim && _falhas == 0) {
+      msg = 'Pronto! Os $total vídeos estão no celular e funcionam sem internet.';
+    } else if (_fim) {
+      msg =
+          'Terminou, mas $_falhas vídeo(s) não baixaram. Toque em "Baixar os que faltam" quando a internet estiver melhor.';
+    } else {
+      msg =
+          'São $total vídeos. Recomendado no Wi-Fi: pode usar bastante dados e espaço.';
+    }
+    return AlertDialog(
+      title: const Text('Baixar todos os vídeos'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (_rodando || _fim)
+            LinearProgressIndicator(
+              value: total == 0 ? null : feitos / total,
+            ),
+          const SizedBox(height: 12),
+          Text(msg),
+          const SizedBox(height: 8),
+          Text(
+            'No celular agora: $_arquivos vídeos (${_mb(_bytes)})',
+            style: const TextStyle(color: kMudo, fontSize: 12),
+          ),
+        ],
+      ),
+      actions: [
+        if (!_rodando && _arquivos > 0)
+          TextButton(onPressed: _apagar, child: const Text('Apagar')),
+        TextButton(
+          onPressed: _rodando
+              ? () => setState(() => _cancelado = true)
+              : () => Navigator.pop(context),
+          child: Text(_rodando ? 'Parar' : 'Fechar'),
+        ),
+        if (!_rodando)
+          FilledButton(
+            onPressed: _pronto && total > 0 ? _baixarTodos : null,
+            child: Text(_arquivos == 0 ? 'Baixar todos' : 'Baixar os que faltam'),
+          ),
       ],
     );
   }
