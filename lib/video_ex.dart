@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:video_player/video_player.dart';
 import 'state.dart';
 import 'telas.dart';
@@ -204,26 +205,90 @@ Future<void> _abrirYoutube(BuildContext context, String url) async {
   }
 }
 
-/// Cartão com a capa do vídeo do YouTube; toque abre numa aba dentro do app.
-/// Sem link cadastrado, abre a busca do YouTube pelo nome do exercício.
-class _CartaoYoutube extends StatelessWidget {
+/// Cartão com a capa do vídeo do YouTube. Ao tocar, o vídeo toca aqui mesmo,
+/// dentro do app. Se o vídeo não permitir ser incorporado, mostra o botão
+/// "Abrir no YouTube". Sem link cadastrado, abre a busca pelo nome.
+class _CartaoYoutube extends StatefulWidget {
   final String? link;
   final String nome;
   final double altura;
   const _CartaoYoutube(
       {required this.link, required this.nome, required this.altura});
+  @override
+  State<_CartaoYoutube> createState() => _CartaoYoutubeEstado();
+}
+
+class _CartaoYoutubeEstado extends State<_CartaoYoutube> {
+  YoutubePlayerController? _c;
+  bool _erro = false;
+
+  String? get _id => widget.link == null ? null : _idYoutube(widget.link!);
+
+  String get _urlBusca =>
+      'https://www.youtube.com/results?search_query=${Uri.encodeQueryComponent('${widget.nome} execução correta')}';
+
+  void _tocar() {
+    final id = _id;
+    if (id == null) {
+      _abrirYoutube(context, _urlBusca);
+      return;
+    }
+    final c = YoutubePlayerController.fromVideoId(
+      videoId: id,
+      autoPlay: true,
+      params: const YoutubePlayerParams(showFullscreenButton: true),
+    );
+    c.listen((v) {
+      if (v.error != YoutubeError.none && mounted && !_erro) {
+        setState(() => _erro = true);
+      }
+    });
+    setState(() {
+      _c = c;
+      _erro = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    _c?.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final id = link == null ? null : _idYoutube(link!);
-    final url = link ??
-        'https://www.youtube.com/results?search_query=${Uri.encodeQueryComponent('$nome execução correta')}';
+    final c = _c;
+    if (c != null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(18),
+            child: YoutubePlayer(controller: c, aspectRatio: 16 / 9),
+          ),
+          if (_erro)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                'Este vídeo não pode ser tocado aqui dentro.',
+                style: const TextStyle(color: Colors.white54, fontSize: 12),
+              ),
+            ),
+          TextButton.icon(
+            onPressed: () => _abrirYoutube(context, widget.link!),
+            icon: const Icon(Icons.open_in_new_rounded, size: 16),
+            label: const Text('Abrir no YouTube'),
+          ),
+        ],
+      );
+    }
+    final id = _id;
     return GestureDetector(
-      onTap: () => _abrirYoutube(context, url),
+      onTap: _tocar,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
         child: SizedBox(
-          height: altura,
+          height: widget.altura,
           width: double.infinity,
           child: Stack(
             fit: StackFit.expand,
@@ -246,7 +311,7 @@ class _CartaoYoutube extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       id != null
-                          ? 'Ver execução no YouTube'
+                          ? 'Ver execução'
                           : 'Buscar execução no YouTube',
                       style: const TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w700),
