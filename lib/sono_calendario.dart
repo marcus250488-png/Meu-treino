@@ -1,7 +1,12 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'state.dart';
 import 'extras.dart';
+
+/// Mesma fonte dos títulos do resto do app (Barlow Condensed).
+TextStyle _fonteTitulo(double s) => GoogleFonts.barlowCondensed(
+    fontSize: s, fontWeight: FontWeight.w700, color: Colors.white);
 
 class SonoCalendarioTela extends StatefulWidget {
   const SonoCalendarioTela({super.key});
@@ -112,7 +117,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
                   Container(width: 42, height: 42, decoration: BoxDecoration(color: const Color(0xFF1A6CFF).withOpacity(.16), borderRadius: BorderRadius.circular(14)),
                     child: const Icon(Icons.nightlight_round, color: Color(0xFF5B9AFF))),
                   const SizedBox(width: 12), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    const Text('Diário do sono', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+                    Text('Diário do sono', style: _fonteTitulo(26)),
                     Text('${dia.day.toString().padLeft(2,'0')}/${dia.month.toString().padLeft(2,'0')}/${dia.year} • Registre sua noite',
                       style: TextStyle(fontSize: 12, color: Theme.of(c).colorScheme.onSurfaceVariant)),
                   ])),
@@ -134,7 +139,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
                         Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           const Text('TEMPO NA CAMA', style: TextStyle(fontSize: 10, letterSpacing: 1.1, color: Colors.white70)),
                           Text(previsto > 0 ? duracao(previsto) : 'Confira os horários',
-                            style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w800)),
+                            style: _fonteTitulo(26)),
                         ])),
                         Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
                           const Text('SONO LÍQUIDO', style: TextStyle(fontSize: 9, color: Colors.white70)),
@@ -228,7 +233,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
   Widget resumoCard(String titulo, String valor, IconData icone) => Expanded(
     child: Card(child: Padding(padding: const EdgeInsets.all(12), child: Column(children: [
       Icon(icone, color: const Color(0xFF1A6CFF)), const SizedBox(height: 5),
-      Text(valor, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      Text(valor, style: _fonteTitulo(26)),
       Text(titulo, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11)),
     ]))),
   );
@@ -248,7 +253,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
       final mediaQualidade = media(ultimos7, 'qualidade');
       final mesNome = const ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'][mes.month - 1];
       return Scaffold(
-        appBar: AppBar(title: const Text('Sono e calendário'), actions: [
+        appBar: AppBar(title: Text('Sono e calendário', style: _fonteTitulo(28)), actions: [
           IconButton(tooltip: 'Ir para hoje', onPressed: () => setState(() { dia = DateTime.now(); mes = DateTime(DateTime.now().year, DateTime.now().month); }), icon: const Icon(Icons.today)),
         ]),
         body: ListView(padding: const EdgeInsets.fromLTRB(12, 8, 12, 120), children: [
@@ -260,7 +265,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
                 Container(width: 44, height: 44, decoration: BoxDecoration(color: const Color(0xFF1769E8).withOpacity(.18), borderRadius: BorderRadius.circular(14)), child: const Icon(Icons.sensors, color: Color(0xFF65A5FF), size: 25)),
                 const SizedBox(width: 12),
                 Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Text('Monitoramento pelo celular', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text('Monitoramento pelo celular', style: _fonteTitulo(22)),
                   Text(_monitorando ? 'Sensores ativos • sessão em andamento' : 'Use os sensores disponíveis no aparelho', style: const TextStyle(fontSize: 12, color: Colors.white70)),
                 ])),
                 Container(width: 9, height: 9, decoration: BoxDecoration(color: _monitorando ? Colors.greenAccent : Colors.white30, shape: BoxShape.circle)),
@@ -289,7 +294,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
             resumoCard('Registros (30 dias)', '${ultimos30.length}', Icons.calendar_month),
           ]),
           Card(child: Padding(padding: const EdgeInsets.all(12), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Text('Evolução dos últimos 7 registros', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            Text('Evolução dos últimos 7 registros', style: _fonteTitulo(22)),
             const SizedBox(height: 12),
             if (ultimos7.isEmpty) const Text('Registre seu sono diariamente para visualizar sua evolução.')
             else ...ultimos7.reversed.map((x) {
@@ -305,7 +310,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
           Card(child: Padding(padding: const EdgeInsets.all(12), child: Column(children: [
             Row(children: [
               IconButton(onPressed: () => setState(() => mes = DateTime(mes.year, mes.month - 1)), icon: const Icon(Icons.chevron_left)),
-              Expanded(child: Text('$mesNome ${mes.year}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+              Expanded(child: Text('$mesNome ${mes.year}', textAlign: TextAlign.center, style: _fonteTitulo(24))),
               IconButton(onPressed: () => setState(() => mes = DateTime(mes.year, mes.month + 1)), icon: const Icon(Icons.chevron_right)),
             ]),
             Row(children: ['D','S','T','Q','Q','S','S'].map((x) => Expanded(child: Center(child: Text(x, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white60))))).toList()),
@@ -340,7 +345,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
               _Legenda(cor: Colors.orangeAccent, texto: 'Nutrição'), _Legenda(cor: Colors.purpleAccent, texto: 'Passos'),
             ]),
           ]))),
-          Padding(padding: const EdgeInsets.fromLTRB(4, 12, 4, 6), child: Text('Resumo de ${dia.day}/${dia.month}/${dia.year}', style: const TextStyle(fontSize: 19, fontWeight: FontWeight.bold))),
+          Padding(padding: const EdgeInsets.fromLTRB(4, 12, 4, 6), child: Text('Resumo de ${dia.day}/${dia.month}/${dia.year}', style: _fonteTitulo(24))),
           Card(child: Padding(padding: const EdgeInsets.all(14), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(r == null ? 'Sono ainda não registrado' : 'Sono líquido: ${duracao(numero(r, 'sonoLiquido') == 0 ? numero(r, 'duracao') : numero(r, 'sonoLiquido'))}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             if (r != null) ...[
@@ -357,7 +362,7 @@ class _SonoCalendarioTelaState extends State<SonoCalendarioTela> {
             ]),
           ]))),
           Card(child: Padding(padding: const EdgeInsets.all(14), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Text('Resumo do dia', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text('Resumo do dia', style: _fonteTitulo(22)),
             Text('Treinos/cardio: ${app.sessoesDoDia(dia).length}'),
             Text('Nutrição: ${app.totalDia(chave(dia)).kcal.round()} kcal'),
             Text('Passos: ${app.passos[chave(dia)] ?? 0}'),
