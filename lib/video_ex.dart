@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'state.dart';
 import 'telas.dart';
@@ -16,13 +17,15 @@ import 'telas.dart';
 class _Fontes {
   final Set<String> locais;
   final Map<String, String> urls;
-  _Fontes(this.locais, this.urls);
+  final Map<String, String> yt;
+  _Fontes(this.locais, this.urls, this.yt);
 }
 
 class _Fonte {
   final String? asset;
   final String? url;
-  const _Fonte({this.asset, this.url});
+  final String? yt;
+  const _Fonte({this.asset, this.url, this.yt});
 }
 
 Future<_Fontes>? _carregando;
@@ -39,13 +42,16 @@ Future<_Fontes> _lerFontes() async {
       .where((a) => a.startsWith('assets/videos/') && a.endsWith('.mp4'))
       .map((a) => a.substring(14, a.length - 4))
       .toSet();
-  var urls = <String, String>{};
+  // O servidor antigo de vídeos (r2.dev) saiu do ar: não usamos mais o
+  // assets/videos.json. Os vídeos agora são links do YouTube.
+  final urls = <String, String>{};
+  var yt = <String, String>{};
   try {
-    final txt = await rootBundle.loadString('assets/videos.json');
+    final txt = await rootBundle.loadString('assets/youtube.json');
     final j = jsonDecode(txt) as Map<String, dynamic>;
-    urls = {for (final e in j.entries) e.key: '${e.value}'};
+    yt = {for (final e in j.entries) e.key: '${e.value}'};
   } catch (_) {}
-  return _Fontes(locais, urls);
+  return _Fontes(locais, urls, yt);
 }
 
 /// Fonte do vídeo do exercício, ou null se não existir.
@@ -53,6 +59,8 @@ Future<_Fontes> _lerFontes() async {
 /// procura na biblioteca um exercício com o mesmo nome que tenha vídeo.
 _Fonte? _fonteVideo(String exId, _Fontes f, [String nome = '']) {
   _Fonte? de(String id) {
+    final y = f.yt[id];
+    if (y != null) return _Fonte(yt: y);
     final u = f.urls[id];
     if (u != null) return _Fonte(url: u);
     if (f.locais.contains(id)) return _Fonte(asset: 'assets/videos/$id.mp4');
@@ -155,7 +163,13 @@ class VideoExercicio extends StatelessWidget {
         final f = snap.data;
         if (f == null) return const SizedBox.shrink();
         final fonte = _fonteVideo(exId, f, nome);
-        if (fonte == null) return const SizedBox.shrink();
+        if (fonte == null || fonte.yt != null) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: abaixo),
+            child: _CartaoYoutube(
+                link: fonte?.yt, nome: nome, altura: altura > 220 ? 220 : altura),
+          );
+        }
         return Padding(
           padding: EdgeInsets.only(bottom: abaixo),
           child: _PlayerLoop(
@@ -165,6 +179,85 @@ class VideoExercicio extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+String? _idYoutube(String url) {
+  final m = RegExp(r'(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})').firstMatch(url);
+  return m?.group(1);
+}
+
+Future<void> _abrirYoutube(BuildContext context, String url) async {
+  try {
+    final ok =
+        await launchUrl(Uri.parse(url), mode: LaunchMode.inAppBrowserView);
+    if (ok) return;
+  } catch (_) {}
+  try {
+    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+  } catch (_) {
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Não consegui abrir o YouTube.')));
+    }
+  }
+}
+
+/// Cartão com a capa do vídeo do YouTube; toque abre numa aba dentro do app.
+/// Sem link cadastrado, abre a busca do YouTube pelo nome do exercício.
+class _CartaoYoutube extends StatelessWidget {
+  final String? link;
+  final String nome;
+  final double altura;
+  const _CartaoYoutube(
+      {required this.link, required this.nome, required this.altura});
+
+  @override
+  Widget build(BuildContext context) {
+    final id = link == null ? null : _idYoutube(link!);
+    final url = link ??
+        'https://www.youtube.com/results?search_query=${Uri.encodeQueryComponent('$nome execução correta')}';
+    return GestureDetector(
+      onTap: () => _abrirYoutube(context, url),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18),
+        child: SizedBox(
+          height: altura,
+          width: double.infinity,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (id != null)
+                Image.network(
+                  'https://img.youtube.com/vi/$id/hqdefault.jpg',
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => Container(color: Colors.black),
+                )
+              else
+                Container(color: Colors.black),
+              Container(color: Colors.black38),
+              Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.play_circle_fill_rounded,
+                        size: 60, color: Colors.white),
+                    const SizedBox(height: 8),
+                    Text(
+                      id != null
+                          ? 'Ver execução no YouTube'
+                          : 'Buscar execução no YouTube',
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
@@ -351,9 +444,7 @@ class BotaoVerExecucao extends StatelessWidget {
       future: _fontes(),
       builder: (context, snap) {
         final f = snap.data;
-        if (f == null || _fonteVideo(exId, f, nome) == null) {
-          return const SizedBox.shrink();
-        }
+        if (f == null) return const SizedBox.shrink();
         return OutlinedButton.icon(
           style: estiloContornoMini,
           onPressed: () => showModalBottomSheet<void>(

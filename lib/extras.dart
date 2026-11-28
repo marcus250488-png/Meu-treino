@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'state.dart';
 import 'nivel.dart';
 import 'telas.dart';
-import 'video_ex.dart' show abrirBaixarVideosDoPlano, abrirBaixarTodosVideos;
 import 'edicao.dart';
 import 'passos.dart';
 import 'sessao_detalhe.dart';
@@ -493,9 +492,6 @@ class MaisTela extends StatelessWidget {
             _item(Icons.picture_as_pdf_outlined, 'Importar treino (PDF)',
                 'Atualize sua ficha a partir de um arquivo',
                 () => abrirImportar(context, irPara)),
-            _item(Icons.cloud_download_outlined, 'Baixar vídeos do plano',
-                'Deixe os vídeos prontos para usar sem internet',
-                () => abrirBaixarVideosDoPlano(context)),
             _secao('Aplicativo'),
             _item(Icons.tune_rounded, 'Configurações',
                 'Descanso e comportamento do aplicativo',
@@ -564,26 +560,6 @@ class ConfigTela extends StatelessWidget {
                     style: TextStyle(color: kMudo)),
                 value: app.manterTela,
                 onChanged: (v) => app.setManterTela(v),
-              ),
-            ),
-            const SizedBox(height: 12),
-            Vidro(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Vídeos offline', style: titulo(26)),
-                  const SizedBox(height: 6),
-                  const Text(
-                      'Baixe todos os vídeos de execução para o celular e use sem internet. Recomendado no Wi-Fi.',
-                      style: TextStyle(color: kMudo)),
-                  const SizedBox(height: 12),
-                  OutlinedButton.icon(
-                    style: estiloContorno,
-                    onPressed: () => abrirBaixarTodosVideos(context),
-                    icon: const Icon(Icons.download_for_offline_outlined),
-                    label: const Text('Baixar todos os vídeos'),
-                  ),
-                ],
               ),
             ),
           ],
